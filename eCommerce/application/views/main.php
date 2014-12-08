@@ -11,24 +11,31 @@
     <!-- Le styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
+      
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
+
       .sidebar-nav {
         padding: 9px 0;
       }
 
       @media (max-width: 980px) {
         /* Enable use of floated navbar text */
-        .navbar-text.pull-right {
+      }
+      .navbar-text.pull-right {
           float: none;
           padding-left: 5px;
           padding-right: 5px;
         }
 
+      .product img {
+        height: 200px;
 
       }
+
+  
     </style>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
 
@@ -57,7 +64,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Shoe Store</a>
+          <a class="navbar-brand" href="/home">Shoe Store</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -73,14 +80,16 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header"><a class="btn" data-toggle="collapse" data-target="#viewdetails">View details &raquo;</a></li>
-              <div class="collapse" id="viewdetails"><li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li></div>
+              <div class="collapse" id="viewdetails">
+                <li><a href="/home/product/shirts">Shirts</a></li>
+                <li><a href="/home/product/shoes">Shoes</a></li>
+                <li><a href="/home/product/shorts">Shorts</a></li>
+              </div>
               
               <li>
-                <form class="navbar-form navbar-left" role="search">
+                <form action='/home/search' method='post' class="navbar-form navbar-left" role="search">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Find a product">
+                <input type="text" class="form-control" name="search" placeholder="Find a product">
               </div>
               <button type="submit" class="glyphicon glyphicon-search"></button>
               </form>
@@ -100,44 +109,30 @@
         	    <span class="caret"></span>
         	  </button>
         	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Price</a></li>
-        	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Most popular</a></li>
-        	  </ul>
+        	    <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_asc">Price$-$$$</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_desc">Price$$$-$</a></li>
+        	<!--     <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_asc/created_at">Newest-Oldest</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_desc/created_at">Oldest-Newest</a></li>
+ -->        	  </ul>
         	</div>
-          <div class="row-fluid">
-            <div class="span4">
-              <h2>Product</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Product</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Product</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-          <div class="row-fluid">
-            <div class="span4">
-              <h2>Product</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Product</h2>
-              <p>Donec id elit non mi porta gtstvida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Product</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
+          <!-- <div class="row-fluid"> -->
+
+<?php  
+// var_dump($products);
+// die();
+  foreach ($products as $product) 
+  { ?>
+    <div class="span3 product">
+      <img src="<?= $product['photo'] ?>">
+      <p><?= $product['name'] ?></p>
+      <p><?= $product['price'] ?></p>
+      <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>
+<?php            
+  }
+?>
+             
+          <!-- </div><!--/row-->
         </div><!--/span-->
       </div><!--/row-->
 
