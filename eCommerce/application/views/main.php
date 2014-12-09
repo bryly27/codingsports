@@ -32,7 +32,10 @@
 
       .product img {
         height: 200px;
+      }
 
+      .banner {
+        width: 100%;
       }
 
   
@@ -54,6 +57,7 @@
   </head>
 
   <body>
+    
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -74,6 +78,7 @@
       </div><!--/.container-fluid -->
     </nav>
 
+
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
@@ -84,15 +89,14 @@
                 <li><a href="/home/product/shirts">Shirts</a></li>
                 <li><a href="/home/product/shoes">Shoes</a></li>
                 <li><a href="/home/product/shorts">Shorts</a></li>
-              </div>
-              
-              <li>
+              </div>              
+              </li>
                 <form action='/home/search' method='post' class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" name="search" placeholder="Find a product">
-              </div>
-              <button type="submit" class="glyphicon glyphicon-search"></button>
-              </form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="search" placeholder="Find a product">
+                  </div>
+                  <button type="submit" class="glyphicon glyphicon-search"></button>
+                </form>
               </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -116,6 +120,7 @@
  -->        	  </ul>
         	</div>
           <!-- <div class="row-fluid"> -->
+
 
 <?php  
 // var_dump($products);
