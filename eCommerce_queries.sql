@@ -23,7 +23,7 @@ select * from orders a join customers b
 		where a.id = 1001;
             
             
-select a.id, a.order_status, a.bill_to_address, b.first_name, a.created_at
+select a.id, a.order_status, a.order_total, a.bill_to_address, b.first_name, a.created_at
 	,c.address, c.address2, c.city, c.state, c.zip_Code
  from orders a, customers b ,addresses c
 	where a.cust_id = b.id 

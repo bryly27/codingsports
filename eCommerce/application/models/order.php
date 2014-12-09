@@ -12,6 +12,15 @@ class Order extends CI_Model
         $this->db->insert('orders', $order_data);
     }
 
+    public function update_order_status($id, $status)
+    {
+        $data = array(
+                       'order_status' => $status
+                    );
+
+        $this->db->update('orders', $data, array('id' => $id));
+    }
+
     public function delete_order($id)
     {
         $this->db->where('id', $id);
@@ -26,19 +35,41 @@ class Order extends CI_Model
         return false;
     }
 
-    public function get_all_orders()
+    public function get_all_orders($data)
     {
-        // $query = $this->db->order_by('created_at', 'desc')->get('orders');
-        $this->db->select ( 'orders.id, orders. customers.first_name, orders.created_at, ' );
-        $this->db->from ( 'orders' );
-        $this->db->join ( 'customers', 'Category.cat_id = Album.cat_id' , 'left' );
-        $query = $this->db->get ();
-        return $query->result ();
+        $where = '';
+
+        foreach($data as $key => $val)
+        {
+            if($key == 'status' and $val <> 'show_all' and strlen($val) > 0)
+                $where = "a.order_status = '$val'";
+            else if($key == 'search' and strlen($val) > 0)
+            {
+                $where = "a.id like  '%$val%' OR b.first_name like '%$val%' OR a.order_status like  '%$val%'";
+            }
+        }
+
+        $this->db->select ( 'a.id, a.order_status, a.order_total,  a.created_at, b.first_name, b.last_name, c.address, , c.address2, , c.city, , c.state, , c.zip_code');
+        $this->db->from( 'orders as a');
+        $this->db->join( 'customers as b', 'a.cust_id = b.id' );
+        $this->db->join( 'addresses as c ', 'c.id = a.bill_to_address and c.cust_id = a.cust_id and c.cust_id = b.id');
+
+        // if(strlen($status) > 0 and $where <> 'show_all')
+        //     $this->db->where('a.order_status', $status);
+
+        if(strlen($where) > 0)
+        $this->db->where($where);
+
+        $query = $this->db->get();
+        return $query->result();
 
         if($query->num_rows() > 0)
             return $query->result();
         return false;
     }
+
+
+
 }
 
 

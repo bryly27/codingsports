@@ -1,18 +1,23 @@
 
-.search, .select_search{
+#search, #select_search{
     width: 150px;
     margin-top: 80px;
     display: inline-block;
     vertical-align: top;
 }
 
-.search{
+#search{
     width: 250px;
 }
 
-.select_search{
+#select_search{
     float:right;
     margin-right: 400px;
+}
+
+#select_search button{
+  color: white;
+  background-color: #31B0D5;
 }
 
 /*.logoff{
@@ -25,11 +30,11 @@
     margin: 20px 20px;
 }
 
-.pagination{
+#pagination{
     margin-left: 300px;
 }
 
-.select_status select{
+#select_status select{
     border: none;
     width: 100px;
 }

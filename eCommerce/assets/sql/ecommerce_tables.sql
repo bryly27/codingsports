@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `ecommercesports` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `ecommercesports`;
+CREATE DATABASE  IF NOT EXISTS `ecommerce_sports` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ecommerce_sports`;
 -- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
--- Host: 127.0.0.1    Database: ecommercesports
+-- Host: 127.0.0.1    Database: ecommerce_sports
 -- ------------------------------------------------------
 -- Server version	5.5.38
 
@@ -191,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-09  9:45:32
+-- Dump completed on 2014-12-09  9:54:23

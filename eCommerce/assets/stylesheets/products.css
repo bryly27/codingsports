@@ -1,5 +1,5 @@
 
-.search, .select_search{
+.search, .add_product{
     width: 150px;
     margin-top: 80px;
     display: inline-block;
@@ -10,7 +10,7 @@
     width: 250px;
 }
 
-.select_search{
+.add_product{
     float:right;
     margin-right: 400px;
 }
