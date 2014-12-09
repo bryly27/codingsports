@@ -72,7 +72,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="/home/cart">Shopping Cart</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!--/.container-fluid -->
@@ -117,7 +117,7 @@
               <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_desc">Price$$$-$</a></li>
         	<!--     <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_asc/created_at">Newest-Oldest</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_desc/created_at">Oldest-Newest</a></li>
- -->        	  </ul>
+ -->        </ul>
         	</div>
           <!-- <div class="row-fluid"> -->
 

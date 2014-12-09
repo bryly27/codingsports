@@ -5,7 +5,7 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->output->enable_profiler();
+        // $this->output->enable_profiler();
         $this->load->library('form_validation');
         $this->load->helper('date');
     }
@@ -28,19 +28,16 @@ class Admin extends CI_Controller
 
       if($this->form_validation->run())
       {
-        /* Begin - Arjun - In progress - 12/8 - 8:45pm  */
-
         $this->load->model('order');
         $order_data = $this->order->get_all_orders();
         $this->load->view('orders', array('orders' => $order_data));
-
-
-        /* End - Arjun - In progress - 12/8 - 8:45pm  */
       }
 
-
-
     }
+
+
+
+
 
 
 }
