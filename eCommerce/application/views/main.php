@@ -72,7 +72,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/home/cart">Shopping Cart</a></li>
+            <li><a href="/cart">Shopping Cart(<?= $this->session->userdata('cart')['total_items'] ?>)</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!--/.container-fluid -->

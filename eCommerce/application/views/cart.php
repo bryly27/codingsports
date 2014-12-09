@@ -1,4 +1,4 @@
-
+<!-- <?php var_dump($cart) ?> -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,11 +60,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Shoe Store</a>
+          <a class="navbar-brand" href="/">Shoe Store</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="">Shopping Cart(<?= $this->session->userdata('cart')['total_items'] ?>)</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!--/.container-fluid -->
@@ -81,40 +81,35 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>$21</td>
-          <!--Form in the quantity column that updates the quantity or deletes it -->
-          <!--Two forms for each button? -->
-          <form action='' method="post">
-            <td>4 
-              <button type="button submit" class="glyphicon glyphicon-trash pull-right"></button>
-              <button type="button submit" class="btn btn-link pull-right">update</button>  
-            </td>
-          </form>
-            <td>$50.32</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>$3</td>
-            <td>5</td>
-            <td>$39.43</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colspan="2">Larry the Bird</td>
-            <td>$5.23</td>
-          </tr>
+          <?php
+          foreach ($cart as $product) 
+          {
+            ?> 
+            <tr>
+              <td><?= $product['name'] ?></td>
+              <td>$<?= $product['price'] ?></td>
+              <form action='/cart/delete/<?= $product['id']?>' method="post">
+                <td><?= $product['quantity'] ?>
+                  <button type="button submit" class="glyphicon glyphicon-trash pull-right"></button>
+                  
+                  <!-- <button type="button submit" class="btn btn-link pull-right">update</button>   -->
+                </td>
+              </form>
+              <td>$<?= $product['price'] * $product['quantity'] ?></td>
+            </tr>
+          <?php
+          }
+          ?>
         </tbody>
       </table>
     </div><!-- /table -->
 
-    <p class="container text-right">Sum amount: $100.04</p>
+    <p class="container text-right">Sum amount: $<?= $cart['total_price'] ?></p>
      <div class="container">
-       <button class="btn btn-primary pull-right" type="submit" value='submit'>Continue shopping</button>
+       <a href="/"><button class="btn btn-primary pull-right" type="submit" value='submit'>Continue shopping</button></a>
      </div>
      <div class="container">
-       <form class="form-horizontal span8" action="" role="form" method="post">
+       <form class="form-horizontal span8" action="/cart/pay" role="form" method="post">
          <h3>Shipping Information</h3>
          <div class="form-group">
            <label class="col-sm-3 control-label">First Name:</label>
