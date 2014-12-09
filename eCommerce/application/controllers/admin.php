@@ -50,12 +50,8 @@ class Admin extends CI_Controller
 
       public function show_products()
       {
-          $this->load->view('products');
-      }
-
-      public function show_products()
-      {
-          $this->load->view('products');
+          // $this->load->view('/admin_products');
+        redirect('/admin_prod/index');
       }
 
       public function logoff()
