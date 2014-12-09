@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `ecommercesports` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `eCommerceSports`;
+USE `ecommercesports`;
 -- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
--- Host: 127.0.0.1    Database: eCommerceSports
+-- Host: 127.0.0.1    Database: ecommercesports
 -- ------------------------------------------------------
 -- Server version	5.5.38
 
@@ -16,6 +16,37 @@ USE `eCommerceSports`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `addresses`
+--
+
+DROP TABLE IF EXISTS `addresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `addresses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `address` varchar(145) DEFAULT NULL,
+  `address2` varchar(145) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `zip_code` varchar(10) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `addresses`
+--
+
+LOCK TABLES `addresses` WRITE;
+/*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `admins`
@@ -42,40 +73,8 @@ CREATE TABLE `admins` (
 
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,'Bryant','Yu','12345678','bryant@bryant.com',NULL,NULL),(2,'Stephan ','Long','12345678','stephan@stephan.com',NULL,NULL),(3,'Arjun','Kankanala','12345678',NULL,NULL,NULL);
+INSERT INTO `admins` VALUES (1,'Bryant','Yu','12345678','bryant@bryant.com',NULL,NULL),(2,'Stephan ','Long','12345678','stephan@stephan.com',NULL,NULL),(3,'Arjun','Kankanala','12345678','arjun@arjun.com',NULL,NULL);
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `billingInfos`
---
-
-DROP TABLE IF EXISTS `billingInfos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `billingInfos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(145) DEFAULT NULL,
-  `last_name` varchar(145) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  `city` varchar(45) DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL,
-  `zip_code` varchar(45) DEFAULT NULL,
-  `card_#` int(11) DEFAULT NULL,
-  `security_code` varchar(45) DEFAULT NULL,
-  `expiration` int(11) DEFAULT NULL,
-  `cusomer_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `billingInfos`
---
-
-LOCK TABLES `billingInfos` WRITE;
-/*!40000 ALTER TABLE `billingInfos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `billingInfos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -89,10 +88,11 @@ CREATE TABLE `customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(145) DEFAULT NULL,
   `last_name` varchar(145) DEFAULT NULL,
-  `address` varchar(145) DEFAULT NULL,
-  `city` varchar(45) DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
+  `ship_to_address` varchar(45) DEFAULT NULL,
+  `bill_to_address` varchar(45) DEFAULT NULL,
+  `card_number` varchar(16) DEFAULT NULL,
+  `security_code` varchar(4) DEFAULT NULL,
+  `expiration_date` datetime DEFAULT NULL,
   `created_at` varchar(45) DEFAULT NULL,
   `updated_at` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -117,13 +117,14 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(145) DEFAULT NULL,
-  `last_name` varchar(145) DEFAULT NULL,
-  `order_date` datetime DEFAULT NULL,
-  `address` varchar(145) DEFAULT NULL,
-  `total_price` decimal(8,2) DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `cust_id` varchar(45) NOT NULL,
+  `order_status` varchar(15) DEFAULT NULL,
+  `bill_to_address` varchar(45) DEFAULT NULL,
+  `ship_to_address` varchar(45) DEFAULT NULL,
+  `order_total` decimal(10,2) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`,`cust_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -183,4 +184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-08 17:51:51
+-- Dump completed on 2014-12-08 20:41:26

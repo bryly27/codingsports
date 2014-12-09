@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class home extends CI_Controller 
+class home extends CI_Controller
 {
 	public function index()
 	{
 		$this->load->model('products');
 		$info['products'] = $this->products->get_products();
-		$this->load->view('cart', $info);
+		$this->load->view('main', $info);
 	}
 
 	public function order_asc()
@@ -38,5 +38,5 @@ class home extends CI_Controller
 		$this->load->view('main', $info);
 	}
 
-	
+
 }

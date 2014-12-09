@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -14,12 +18,13 @@
 </head>
 <body>
   <div class="container">
-    <form class='login' >
+    <form class='login' action="orders" method="post" >
         <h2 class='heading'>Please sign in</h2>
         <label class='input_label' for='email'>Email</label>
-        <input type='email' name='email' placeholder='Email Address' required>
+        <input type='email' name='email' placeholder='Email Address' <?=set_value('email')?>required>
         <label class='input_label' for='password'>Password</label>
         <input type='password' name='password' placeholder='Password' required>
+        <input type='hidden' name='action' value='login'>
         <div class='checkbox'>
             <label>
                 <input type='checkbox' value='remember_me'> Remember Me

@@ -12,9 +12,25 @@ class Admin extends CI_Controller
 
     public function index()
     {
-       // $this->load->view('admin');
-       // $this->load->view('orders');
-       $this->load->view('products');
-       // $this->load->view('orders');
+       $this->load->view('admin');
+       if($this->input->post('action') == 'login')
+          $this->show_orders();
     }
+
+    public function show_orders()
+    {
+      $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+      $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+      if($this->form_validation->run())
+      {
+        $this->load->model('orders');
+        // $this->
+      }
+
+
+
+    }
+
+
 }
