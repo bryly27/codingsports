@@ -83,14 +83,21 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
+            <td>$21</td>
+          <!--Form in the quantity column that updates the quantity or deletes it -->
+          <!--Two forms for each button? -->
+          <form action='' method="post">
+            <td>4 
+              <button type="button submit" class="glyphicon glyphicon-trash pull-right"></button>
+              <button type="button submit" class="btn btn-link pull-right">update</button>  
+            </td>
+          </form>
             <td>$50.32</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
+            <td>$3</td>
+            <td>5</td>
             <td>$39.43</td>
           </tr>
           <tr>
