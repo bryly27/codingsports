@@ -51,11 +51,10 @@ $active_record = TRUE;
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'root';
-<<<<<<< HEAD
-$db['default']['database'] = '';
-=======
+
+
 $db['default']['database'] = 'eCommerceSports';
->>>>>>> dc7fed534769f7b826f39ef76cfef6abea968517
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

@@ -128,16 +128,16 @@
   foreach ($products as $product) 
   { ?>
     <div class="span3 product">
-      <img src="<?= $product['photo'] ?>">
+      <a href="/detail/index/<?= $product['id'] ?>"><img src="<?= $product['photo'] ?>">
       <p><?= $product['name'] ?></p>
       <p><?= $product['price'] ?></p>
-      <p><a class="btn" href="#">View details &raquo;</a></p>
+      <p><a class="btn" href="/detail/index/<?= $product['id'] ?>">View details &raquo;</a></p></a>
     </div>
 <?php            
   }
 ?>
              
-          <!-- </div><!--/row-->
+          <!-- </div><!/row-->
         </div><!--/span-->
       </div><!--/row-->
 

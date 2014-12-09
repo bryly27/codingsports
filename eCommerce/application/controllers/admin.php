@@ -14,7 +14,7 @@ class Admin extends CI_Controller
     {
        // $this->load->view('admin');
        // $this->load->view('orders');
-       // $this->load->view('products');
-       $this->load->view('order_detail');
+       $this->load->view('products');
+       // $this->load->view('orders');
     }
 }
