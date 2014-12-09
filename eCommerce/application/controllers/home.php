@@ -38,5 +38,10 @@ class home extends CI_Controller
 		$this->load->view('main', $info);
 	}
 
+	public function cart()
+	{
+		$this->load->view('cart');
+	}
+
 
 }

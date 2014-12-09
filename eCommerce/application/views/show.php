@@ -80,7 +80,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="/cart">Shopping Cart(<?= $this->session->userdata('cart')['total_items'] ?>)</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!--/.container-fluid -->
@@ -88,7 +88,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span5">
             <a href="/home">Go back</a>
 <?php  
 
@@ -105,7 +105,7 @@
             <img class = "inline_angle_img" src="" alt="" width="50px" height="50px">
             <img class = "inline_angle_img" src="" alt="" width="50px" height="50px"> -->
         </div><!--/span-->
-        <div class="span9">
+        <div class="span7">
         
         	
           <div class="row-fluid">
@@ -137,12 +137,13 @@
 
 
           <div class="row-fluid">
-          <form action="" method="post">
+          <form action="/cart/addToCart" method="post">
             <div class="input-group-lg span2">
               <input type='number' size='10' id='numberinput' name='quantity' value='0' class="form-control">
               <!-- <span class="input-group-addon"></span> -->
             </div>
             <input type='hidden' name='action' value='add_to_cart'>
+            <input type='hidden' name='prod_id' value='<?= $detail['id'] ?>'>
             <button class="btn btn-lg btn-primary" type="submit" value='submit'>Add to cart</button>
           </form>
           </div>
