@@ -15,6 +15,9 @@ class Admin extends CI_Controller
        $this->load->view('admin');
        if($this->input->post('action') == 'login')
           $this->show_orders();
+       // $this->load->view('orders');
+       // $this->load->view('products');
+       // $this->load->view('orders');
     }
 
     public function show_orders()
