@@ -89,15 +89,21 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
-            <a href="">Go back</a>
-          <h2>PRODUCT NAME HERE</h2>
-            <img src="" alt="" width="250px" height="250px"> <!--Main image for the product shown-->
+            <a href="/home">Go back</a>
+<?php  
+
+  foreach ($details as $detail) 
+  { ?>
+    <h2><?= $detail['name']; ?></h2>
+    <img src="<?= $detail['photo'] ?>" alt="" width="500px"> <!--Main image for the product shown-->
+
+           <!--Main image for the product shown-->
             <!--Thumbnails for different angles of the product-->
+            <!-- <img class = "inline_angle_img" src="" alt="" width="50px" height="50px">
             <img class = "inline_angle_img" src="" alt="" width="50px" height="50px">
             <img class = "inline_angle_img" src="" alt="" width="50px" height="50px">
             <img class = "inline_angle_img" src="" alt="" width="50px" height="50px">
-            <img class = "inline_angle_img" src="" alt="" width="50px" height="50px">
-            <img class = "inline_angle_img" src="" alt="" width="50px" height="50px">
+            <img class = "inline_angle_img" src="" alt="" width="50px" height="50px"> -->
         </div><!--/span-->
         <div class="span9">
         
@@ -105,7 +111,8 @@
           <div class="row-fluid">
             <div class="span9">
               <h2></h2> <!--This H2 is empty to for the P below to be aligned to the image -->
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <h1><?= $detail['description'] ?></h1>
+              <h3><?= $detail['price'] ?></h3>
             </div><!--/span-->
           </div><!--/row-->
 
@@ -118,14 +125,15 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?= $detail['color'] ?></a></li>
               </ul>
             </div>
           </form>
           </div>
+
+<?php
+  }
+?>
 
 
           <div class="row-fluid">
@@ -144,31 +152,18 @@
       <footer class="fixed bottom">
       <div class="container span12" id="similar_footer">
         <h3>Similar items</h3>
-        <div class="similar_info">
-          <img class = "inline_angle_img" src="" alt="" width="100px" height="100px">
-          <p>Small Description</p>
-          <p>Price</p>
-        </div>
-        <div class="similar_info">
-          <img class = "inline_angle_img" src="" alt="" width="100px" height="100px">
-          <p>Small Description</p>
-          <p>Price</p>
-        </div>
-        <div class="similar_info">
-          <img class = "inline_angle_img" src="" alt="" width="100px" height="100px">
-          <p>Small Description</p>
-          <p>Price</p>
-        </div>
-        <div class="similar_info">
-          <img class = "inline_angle_img" src="" alt="" width="100px" height="100px">
-          <p>Small Description</p>
-          <p>Price</p>
-        </div>
-        <div class="similar_info">
-          <img class = "inline_angle_img" src="" alt="" width="100px" height="100px">
-          <p>Small Description</p>
-          <p>Price</p>
-        </div>
+<?php  
+
+  foreach ($similars as $similar) 
+  { ?>
+    <div class="similar_info">
+          <img class = "inline_angle_img" src="<?= $similar['photo'] ?>" alt="" width="100px" height="100px">
+    </div>
+<?php
+  }
+  
+?>
+       
       </div>
        
       </footer>
