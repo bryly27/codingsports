@@ -128,16 +128,16 @@
   foreach ($products as $product) 
   { ?>
     <div class="span3 product">
-      <img src="<?= $product['photo'] ?>">
+      <a href="/detail/index/<?= $product['id'] ?>"><img src="<?= $product['photo'] ?>">
       <p><?= $product['name'] ?></p>
       <p><?= $product['price'] ?></p>
-      <p><a class="btn" href="#">View details &raquo;</a></p>
+      <p><a class="btn" href="/detail/index/<?= $product['id'] ?>">View details &raquo;</a></p></a>
     </div>
 <?php            
   }
 ?>
              
-          <!-- </div><!--/row-->
+          <!-- </div><!/row-->
         </div><!--/span-->
       </div><!--/row-->
 
@@ -166,6 +166,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-
+    <a href="/admin">admin</a>
   </body>
 </html>
