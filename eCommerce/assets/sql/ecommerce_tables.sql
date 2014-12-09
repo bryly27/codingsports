@@ -26,6 +26,7 @@ DROP TABLE IF EXISTS `addresses`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `addresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cust_id` varchar(10) NOT NULL,
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `address` varchar(145) DEFAULT NULL,
@@ -35,8 +36,9 @@ CREATE TABLE `addresses` (
   `zip_code` varchar(10) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`,`cust_id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +47,7 @@ CREATE TABLE `addresses` (
 
 LOCK TABLES `addresses` WRITE;
 /*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
+INSERT INTO `addresses` VALUES (1,'C001','arjun','kankanala','123 fairchild drive','unit 209','Mountain View','CA','94043','2014-12-09 00:00:00',NULL),(2,'C002','bryant','yu','456 fairchild drive','unit 309','Mountain View','CA','94043','2014-12-09 00:00:00',NULL),(3,'C003','stephan','long','789 fairchild drive','unit 409','Mountain View','CA','94043','2014-12-09 00:00:00',NULL),(4,'C001','arjun','kankanala','123 fairchild drive','unit 209','Mountain View','CA','94043','2014-12-09 00:00:00',NULL);
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +88,7 @@ DROP TABLE IF EXISTS `customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(10) NOT NULL,
   `first_name` varchar(145) DEFAULT NULL,
   `last_name` varchar(145) DEFAULT NULL,
   `ship_to_address` varchar(45) DEFAULT NULL,
@@ -95,7 +98,8 @@ CREATE TABLE `customers` (
   `expiration_date` datetime DEFAULT NULL,
   `created_at` varchar(45) DEFAULT NULL,
   `updated_at` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -105,6 +109,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES ('C001','arjun','kankanala','1','1','XXXXXXXXXXXXXXXX','1234','2017-12-01 00:00:00','2014-12-09','2014-12-09'),('C002','bryant','yu','1','1','XXXXXXXXXXXXXXXX','1234','2017-12-01 00:00:00','2014-12-09','2014-12-09'),('C003','stephan','long','1','1','XXXXXXXXXXXXXXXX','1234','2017-12-01 00:00:00','2014-12-09','2014-12-09');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,8 +129,9 @@ CREATE TABLE `orders` (
   `order_total` decimal(10,2) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`,`cust_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`,`cust_id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,6 +140,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1001,'C001','Shipped','1','1',119.99,'2014-12-08 00:00:00','2014-12-08 00:00:00'),(1002,'C002','In Process','2','2',219.99,'2014-12-08 00:00:00','2014-12-08 00:00:00'),(1003,'C003','New','3','3',319.99,'2014-12-08 00:00:00','2014-12-08 00:00:00');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-08 20:41:26
+-- Dump completed on 2014-12-09  9:45:32
