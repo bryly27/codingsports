@@ -6,7 +6,7 @@ class home extends CI_Controller
 	{
 		$this->load->model('products');
 		$info['products'] = $this->products->get_products();
-		$this->load->view('cart', $info);
+		$this->load->view('main', $info);
 	}
 
 	public function order_asc()

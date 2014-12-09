@@ -12,9 +12,9 @@ class Admin extends CI_Controller
 
     public function index()
     {
-       // $this->load->view('admin');
+       $this->load->view('admin');
        // $this->load->view('orders');
-       $this->load->view('products');
+       // $this->load->view('products');
        // $this->load->view('orders');
     }
 }
