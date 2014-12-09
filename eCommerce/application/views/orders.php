@@ -1,3 +1,11 @@
+<?php
+    var_dump($orders);
+    die();
+
+    // $this->session->sess_destroy();
+    // die();
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -56,6 +64,27 @@
                     <th>Status</th>
             </thead>
             <tbody>
+<?php
+                foreach($orders as $order)
+                {
+?>
+                    <tr>
+                        <td><a href='#'><?=$order->id?></a></td>
+                        <td><?=$order->id?></td>
+                        <td>9/6/2014</td>
+                        <td>123 dojo way 98005</td>
+                        <td>$150.99</td>
+                        <td class='select_status'>
+                            <select class='form-control'>
+                                <option>Shipped</option>
+                                <option>Order In Process</option>
+                                <option>Cancelled</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+
+
                     <tr>
                         <td><a href='#'>100</a></td>
                         <td>Bob</td>

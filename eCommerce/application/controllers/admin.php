@@ -15,6 +15,7 @@ class Admin extends CI_Controller
        $this->load->view('admin');
        if($this->input->post('action') == 'login')
           $this->show_orders();
+
        // $this->load->view('orders');
        // $this->load->view('products');
        // $this->load->view('orders');
@@ -27,8 +28,14 @@ class Admin extends CI_Controller
 
       if($this->form_validation->run())
       {
-        $this->load->model('orders');
-        // $this->
+        /* Begin - Arjun - In progress - 12/8 - 8:45pm  */
+
+        $this->load->model('order');
+        $order_data = $this->order->get_all_orders();
+        $this->load->view('orders', array('orders' => $order_data));
+
+
+        /* End - Arjun - In progress - 12/8 - 8:45pm  */
       }
 
 
