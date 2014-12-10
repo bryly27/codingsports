@@ -18,7 +18,7 @@
     <div id="navbar">
       <ul class="nav navbar-nav navbar-left">
       <li><a href="/admin/show_orders">Dashboard</a></li>
-      <li><a href="#">Orders</a></li>
+      <li><a href="/admin/show_orders">Orders</a></li>
       <li><a href="/admin/show_products">Products</a></li>
       <li class='logoff'><a href="#">Log Off</a></li>
         </ul>

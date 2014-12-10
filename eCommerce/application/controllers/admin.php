@@ -59,15 +59,24 @@ class Admin extends CI_Controller
 
     }
 
-      public function show_products()
-      {
-        redirect('/admin_prod/index');
-      }
+    public function show_products()
+    {
+      redirect('/admin_prod/index');
+    }
 
-      public function logoff()
-      {
-          redirect('/admin');
-      }
+    public function order_details($order)
+    {
+      $this->load->model('admin_product');
+      $info['products'] = $this->admin_product->get_order($order);
+      $this->load->view('admin_order_detail', $info);
+    }
+
+
+
+    public function logoff()
+    {
+        redirect('/admin');
+    }
 
 
 

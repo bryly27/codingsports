@@ -36,6 +36,11 @@ class admin_product extends CI_Model {
         return $this->db->query($query, $values);
     }
 
+    function get_order($order)
+    {
+        return $this->db->query("SELECT orders.*, products.*, customers.*, order_items.*, addresses.* FROM products LEFT JOIN order_items ON products.id = order_items.product_id LEFT JOIN orders ON order_items.order_id = orders.id LEFT JOIN customers ON customers.id = orders.cust_id LEFT JOIN addresses ON customers.id = addresses.cust_id WHERE orders.id = '$order'")->result_array();
+    }
+
     
     // function get_product($email)
     // {

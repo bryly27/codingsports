@@ -72,7 +72,7 @@
                 {
 ?>
                     <tr>
-                        <td><a href='#'><?=$order->id?></a></td>
+                        <td><a href='/admin/order_details/<?=$order->id?>'><?=$order->id?></a></td>
                         <td><?=$order->first_name?></td>
                         <td><?=$order->created_at?></td>
                         <td><?=$order->address?> <?=$order->address2?> <?=$order->city?> <?=$order->state?> <?=$order->zip_code?></td>
