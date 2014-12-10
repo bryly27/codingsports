@@ -44,27 +44,9 @@ class Admin extends CI_Controller
 
     public function show_orders($orders_option = null)
     {
-
-
-      $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-      $this->form_validation->set_rules('password', 'Password', 'trim|required');
-
-      if($this->form_validation->run() == true)
-      {
         $this->load->model('order');
         $order_data = $this->order->get_all_orders(array('status' => $orders_option));
         $this->load->view('orders', array('orders' => $order_data));
-      }
-      else
-      {
-        echo 'not working';
-      }
-
-
-        $this->load->model('order');
-        $order_data = $this->order->get_all_orders(array('status' => $orders_option));
-        $this->load->view('orders', array('orders' => $order_data));
-
     }
 
     public function search_orders()
