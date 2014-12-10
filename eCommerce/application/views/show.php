@@ -18,7 +18,7 @@
       .sidebar-nav {
         padding: 9px 0;
       }
-      
+
       img {
         display: block;
         /*margin-left: auto;
@@ -62,7 +62,7 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -90,9 +90,9 @@
       <div class="row-fluid">
         <div class="span5">
             <a href="/home">Go back</a>
-<?php  
+<?php
 
-  foreach ($details as $detail) 
+  foreach ($details as $detail)
   { ?>
     <h2><?= $detail['name']; ?></h2>
     <img src="<?= $detail['photo'] ?>" alt="" width="500px"> <!--Main image for the product shown-->
@@ -106,8 +106,8 @@
             <img class = "inline_angle_img" src="" alt="" width="50px" height="50px"> -->
         </div><!--/span-->
         <div class="span7">
-        
-        	
+
+
           <div class="row-fluid">
             <div class="span9">
               <h2></h2> <!--This H2 is empty to for the P below to be aligned to the image -->
@@ -153,20 +153,21 @@
       <footer class="fixed bottom">
       <div class="container span12" id="similar_footer">
         <h3>Similar items</h3>
-<?php  
-
-  foreach ($similars as $similar) 
+<?php
+  foreach ($similars as $similar)
   { ?>
     <div class="similar_info">
+      <a href='/detail/index/<?= $similar['id'] ?>'>
           <img class = "inline_angle_img" src="<?= $similar['photo'] ?>" alt="" width="100px" height="100px">
+        </a>
     </div>
 <?php
   }
-  
+
 ?>
-       
+
       </div>
-       
+
       </footer>
 
     </div><!--/.fluid-container-->

@@ -73,26 +73,28 @@ $orders_page = $this->session->userdata('orders_page');
             </thead>
             <tbody>
 <?php
+
                 foreach($orders as $order)
-                {
-?>
+                { ?>
                     <tr>
-                        <td><a href='#'><?=$order->id?></a></td>
+                        <td><a href='/admin/order_details/<?=$order->id?>'><?=$order->id?></a></td>
                         <td><?=$order->first_name?></td>
                         <td><?=$order->created_at?></td>
                         <td><?=$order->address?> <?=$order->address2?> <?=$order->city?> <?=$order->state?> <?=$order->zip_code?></td>
                         <td><?=$order->order_total?></td>
-                        <td id='select_status'>
-                            <select class='form-control'>
-                                <option><?=$order->order_status?></option>
-                                <option>Order In Process</option>
-                                <option>Cancelled</option>
-                            </select>
+                        <td id='select_status' class='btn-group'>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <?=$order->order_status?> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="/admin/update_status/New/<?=$order->id?>">New</a></li>
+                                <li><a href="/admin/update_status/In_process/<?=$order->id?>">In Process</a></li>
+                                <li><a href="/admin/update_status/Shipped/<?=$order->id?>">Shipped</a></li>
+                                <li><a href="/admin/update_status/Cancelled/<?=$order->id?>">Cancelled</a></li>
+                            </ul>
                         </td>
                     </tr>
-<?php
-                }
-?>
+<?php           } ?>
             </tbody>
         </table>
 

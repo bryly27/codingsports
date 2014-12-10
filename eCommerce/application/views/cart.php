@@ -18,7 +18,7 @@
       .sidebar-nav {
         padding: 9px 0;
       }
-      
+
       /*.form-group {
         margin-bottom: 0px;
       }*/
@@ -46,7 +46,7 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -82,16 +82,16 @@
         </thead>
         <tbody>
           <?php
-          foreach ($cart as $product) 
+          foreach ($cart as $product)
           {
-            ?> 
+            ?>
             <tr>
               <td><?= $product['name'] ?></td>
               <td>$<?= $product['price'] ?></td>
               <form action='/cart/delete/<?= $product['id']?>' method="post">
                 <td><?= $product['quantity'] ?>
                   <button type="button submit" class="glyphicon glyphicon-trash pull-right"></button>
-                  
+
                   <!-- <button type="button submit" class="btn btn-link pull-right">update</button>   -->
                 </td>
               </form>
@@ -126,7 +126,7 @@
          <div class="form-group">
            <label class="col-sm-3 control-label">Address:</label>
            <div class="col-sm-9">
-             <input type="text" class="form-control" id="address" placeholder="Address" name="address">
+             <input type="text" class="form-control" id="address" placeholder="Address" name="address" value="123 Street">
            </div>
          </div>
          <div class="form-group">
@@ -138,19 +138,19 @@
          <div class="form-group">
            <label class="col-sm-3 control-label">City:</label>
            <div class="col-sm-9">
-             <input type="text" class="form-control" id="city" placeholder="City" name="city">
+             <input type="text" class="form-control" id="city" placeholder="City" name="city" value="Cupertino">
            </div>
          </div>
          <div class="form-group">
            <label class="col-sm-3 control-label">State:</label>
            <div class="col-sm-9">
-             <input type="text" class="form-control" id="state" placeholder="State" name="state">
+             <input type="text" class="form-control" id="state" placeholder="State" name="state" value="CA">
            </div>
          </div>
          <div class="form-group">
            <label class="col-sm-3 control-label">Zipcode:</label>
            <div class="col-sm-9">
-             <input type="text" class="form-control" id="zipcode" placeholder="Zipcode" name="zip">
+             <input type="text" class="form-control" id="zipcode" placeholder="Zipcode" name="zip" value="95126">
            </div>
          </div>
          <h3>Billing Information</h3>
@@ -176,7 +176,7 @@
           <div class="form-group">
             <label class="col-sm-3 control-label">Address:</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="baddress" placeholder="Address" name="baddress">
+              <input type="text" class="form-control" id="baddress" placeholder="Address" name="baddress" value="123 Street">
             </div>
           </div>
           <div class="form-group">
@@ -188,40 +188,40 @@
           <div class="form-group">
             <label class="col-sm-3 control-label">City:</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="bcity" placeholder="City" name="bcity">
+              <input type="text" class="form-control" id="bcity" placeholder="City" name="bcity" value="Cupertino">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">State:</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="bstate" placeholder="State" name="bstate">
+              <input type="text" class="form-control" id="bstate" placeholder="State" name="bstate" value="CA">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Zipcode:</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="bzipcode" placeholder="Zipcode" name="bzip">
+              <input type="text" class="form-control" id="bzipcode" placeholder="Zipcode" name="bzip" value="95126">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Card:</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="card" placeholder="CC Number" name="card">
+              <input type="text" class="form-control" id="card" placeholder="CC Number" name="card" value="123456789">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Security Code:</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="seccode" placeholder="Security Code" name="seccode">
+              <input type="text" class="form-control" id="seccode" placeholder="Security Code" name="seccode" value="456">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Expiration:</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="expirationmo" placeholder="Exp Month" name="exp_month">
+              <input type="text" class="form-control" id="expirationmo" placeholder="Exp Month" name="exp_month" value="05">
             </div>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="expirationyr" placeholder="Exp Year" name="exp_year">
+              <input type="text" class="form-control" id="expirationyr" placeholder="Exp Year" name="exp_year" value="2018">
             </div>
           </div>
           <div class="form-group">

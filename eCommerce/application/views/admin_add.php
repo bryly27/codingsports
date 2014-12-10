@@ -13,13 +13,13 @@
 				<p>Categories:	<select name='category'>
 													<option>Basketball</option>
 													<option>Running</option>
-												</select>	
+												</select>
 				<p>or add new category: <input type='text' name='category'></p>
 				<p>Type:	<select name='type'>
 										<option value='shirts'>Shirt</option>
 										<option value='shoes'>Shoes</option>
 										<option value='shorts'>Shorts</option>
-									</select>	
+									</select>
 				<p>or add new type: <input type='text' name='type'></p>
 				<p>Price: <input type='text' name='price'></p>
 				<p>Gender: 	<select name='gender'>

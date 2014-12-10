@@ -31,6 +31,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type='submit'> Sign In</button>
+        <a href="/">Go to store</a>
      </form>
 </div> <!-- container end -->
 

@@ -18,9 +18,9 @@
     <div id="navbar">
       <ul class="nav navbar-nav navbar-left">
       <li><a href="/admin/show_orders">Dashboard</a></li>
-      <li><a href="#">Orders</a></li>
+      <li><a href="/admin/show_orders">Orders</a></li>
       <li><a href="/admin/show_products">Products</a></li>
-      <li class='logoff'><a href="#">Log Off</a></li>
+      <li class='logoff'><a href="/admin/logOff">Log Off</a></li>
         </ul>
     </div>
   </nav>
@@ -54,8 +54,8 @@
           <th>Action</th>
         </thead>
       <tbody>
-<?php  
-        foreach ($products as $product) 
+<?php
+        foreach ($products as $product)
         { ?>
           <tr>
             <td><img class='img' src='<?= $product['photo'] ?>'></td>
@@ -69,7 +69,7 @@
             </td>
         </tr>
 <?php   } ?>
-      
+
       </tbody>
         </table>
 

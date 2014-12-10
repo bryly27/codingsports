@@ -11,7 +11,7 @@
     <!-- Le styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-      
+
       body {
         padding-top: 60px;
         padding-bottom: 40px;
@@ -31,14 +31,21 @@
         }
 
       .product img {
-        height: 200px;
+        height: 150px;
       }
 
-      .banner {
+      .banner img{
         width: 100%;
       }
 
-  
+      .leftbar {
+        margin-top: 200px;
+      }
+
+
+
+
+
     </style>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
 
@@ -53,11 +60,11 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    
+
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -80,17 +87,20 @@
 
 
     <div class="container-fluid">
+      <div class='banner'>
+        <img src="https://s3-us-west-1.amazonaws.com/codingdojoecommerce/background_images/sports-category-banner.jpg">
+      </div>
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span3 leftbar">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header"><a class="btn" data-toggle="collapse" data-target="#viewdetails">View details &raquo;</a></li>
-              <div class="collapse" id="viewdetails">
+              <!-- <li class="nav-header"><a class="btn" data-toggle="collapse" data-target="#viewdetails">Sort by: &raquo;</a></li> -->
+              <!-- <div class="collapse" id="viewdetails"> -->
                 <li><a href="/home/product/shirts">Shirts</a></li>
                 <li><a href="/home/product/shoes">Shoes</a></li>
                 <li><a href="/home/product/shorts">Shorts</a></li>
-              </div>              
-              </li>
+              <!-- </div>               -->
+              <!-- </li> -->
                 <form action='/home/search' method='post' class="navbar-form navbar-left" role="search">
                   <div class="form-group">
                     <input type="text" class="form-control" name="search" placeholder="Find a product">
@@ -122,10 +132,10 @@
           <!-- <div class="row-fluid"> -->
 
 
-<?php  
+<?php
 // var_dump($products);
 // die();
-  foreach ($products as $product) 
+  foreach ($products as $product)
   { ?>
     <div class="span3 product">
       <a href="/detail/index/<?= $product['id'] ?>"><img src="<?= $product['photo'] ?>">
@@ -133,17 +143,17 @@
       <p><?= $product['price'] ?></p>
       <p><a class="btn" href="/detail/index/<?= $product['id'] ?>">View details &raquo;</a></p></a>
     </div>
-<?php            
+<?php
   }
 ?>
-             
+
           <!-- </div><!/row-->
         </div><!--/span-->
       </div><!--/row-->
 
       <hr>
 
-      
+
       <nav class="text-center">
       <ul class="pagination">
         <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>

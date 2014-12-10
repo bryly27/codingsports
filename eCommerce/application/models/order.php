@@ -87,6 +87,15 @@ class Order extends CI_Model
         return false;
     }
 
+    public function update($status, $id)
+    {
+
+        $query = "UPDATE orders SET order_status='$status', updated_at=? WHERE id = $id";
+        $values = array(date("Y-m-d, H:i:s"));
+        return $this->db->query($query, $values);
+
+    }
+
 
 
 }

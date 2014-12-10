@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class details extends CI_Model {
-     
+
     function get_details($id)
     {
         return $this->db->query("SELECT * FROM products WHERE id = $id")->result_array();
@@ -26,7 +26,7 @@ class details extends CI_Model {
     // function add_user($user)
     // {
     //     $query = "INSERT INTO users (first_name, last_name, email, password, created_at) VALUES (?,?,?,?,?)";
-    //     $values = array($user['first_name'], $user['last_name'], $user['email'], $user['password'], date("Y-m-d, H:i:s")); 
+    //     $values = array($user['first_name'], $user['last_name'], $user['email'], $user['password'], date("Y-m-d, H:i:s"));
     //     return $this->db->query($query, $values);
     // }
 
