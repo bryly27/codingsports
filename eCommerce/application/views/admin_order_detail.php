@@ -16,8 +16,8 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div id="navbar">
             <ul class="nav navbar-nav navbar-left">
-            <li><a href="/admin/index">Dashboard</a></li>
-            <li><a href="/admin/index">Orders</a></li>
+            <li><a href="/admin/show_orders">Dashboard</a></li>
+            <li><a href="/admin/show_orders">Orders</a></li>
             <li><a href="/admin_prod/index">Products</a></li>
             <li class='logoff'><a href="/admin">Log Off</a></li>
             </ul>

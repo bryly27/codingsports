@@ -68,6 +68,7 @@
             </thead>
             <tbody>
 <?php
+
                 foreach($orders as $order)
                 { ?>
                     <tr>
