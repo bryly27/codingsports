@@ -1,6 +1,11 @@
 <?php
 
+$pages = $this->session->userdata('pages');
+$orders_page = $this->session->userdata('orders_page');
 
+// var_dump($orders_page);
+// var_dump($pages);
+// die();
 
     // $this->session->sess_destroy();
     // die();
@@ -94,14 +99,77 @@
         <div id='pagination'>
         <nav>
             <ul class="pagination">
-            <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li class="inactive"><a href="#">2 </a></li>
-            <li class="inactive"><a href="#">3 </a></li>
-            <li class="inactive"><a href="#">4 </a></li>
-            <li class="enabled"><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+<?php
+
+            $current_page = $pages['current_page'];
+            $prev_page = $current_page - 1;
+            $next_page = $current_page + 1;
+            if (array_key_exists($prev_page, $pages))
+            {
+                $class_prev = 'enabled';
+                $href_prev = '/admin/show_paginated_orders/<?=$prev_page?>';
+            }
+            else
+            {
+                $class_prev = 'disabled';
+                $href_prev = '#';
+            }
+
+            if (array_key_exists($next_page, $pages))
+            {
+                $class_next = 'enabled';
+                $href_next = '/admin/show_paginated_orders/<?=$next_page?>';
+            }
+            else
+            {
+                $class_next = 'disabled';
+                $href_next = '#';
+            }
+?>
+            <li class='<?=$class_prev?>'><a href='<?=$href_prev?>'><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+<?php
+
+            foreach($pages as $key => $val)
+            {
+                if($key == $current_page)
+                    $class = 'active';
+                else
+                    $class = 'inactive';
+
+                if($key !== 'current_page')
+                {
+?>
+                <li class='<?=$class?>'><a href="/admin/show_paginated_orders/<?=$key?>"><?=$key?><span class="sr-only">(current)</span></a></li>
+<?php
+                }
+            }
+?>
+            <li class='<?=$class_next?>'><a href='<?=$href_next?>'><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
             </ul>
         </nav>
         </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -27,6 +27,11 @@ class Order extends CI_Model
         $this->db->delete('orders');
     }
 
+    public function get_count_all()
+    {
+        return $this->db->count_all('orders');
+    }
+
     public function get_order_by_id($id)
     {
         $query = $this->db->get_where('orders', array('id' => $id));
@@ -35,11 +40,22 @@ class Order extends CI_Model
         return false;
     }
 
-    public function get_all_orders($data)
+    public function get_orders_per_page($offset, $limit)
+    {
+        $this->db->select ( 'orders.id' );
+        $this->db->from ( 'orders' );
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get();
+        if($query->num_rows() > 0)
+            return $query->result();
+        return false;
+    }
+
+    public function get_all_orders($filter, $orders )
     {
         $where = '';
 
-        foreach($data as $key => $val)
+        foreach($filter as $key => $val)
         {
             if($key == 'status' and $val <> 'show_all' and strlen($val) > 0)
                 $where = "a.order_status = '$val'";
@@ -56,6 +72,9 @@ class Order extends CI_Model
 
         // if(strlen($status) > 0 and $where <> 'show_all')
         //     $this->db->where('a.order_status', $status);
+
+        if(!empty($orders))
+            $this->db->where_in('a.id', $orders);
 
         if(strlen($where) > 0)
         $this->db->where($where);

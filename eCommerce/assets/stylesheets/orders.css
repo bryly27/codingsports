@@ -38,3 +38,7 @@
     border: none;
     width: 100px;
 }
+
+/*#pagination ul li.disabled{
+    display: none;
+}*/
