@@ -67,7 +67,8 @@ class Admin extends CI_Controller
     public function order_details($order)
     {
       $this->load->model('admin_product');
-      $info['products'] = $this->admin_product->get_order($order);
+      $info['customer_info'] = $this->admin_product->get_customer_info($order);
+      $info['products'] = $this->admin_product->get_order_info($order);
       $this->load->view('admin_order_detail', $info);
     }
 
