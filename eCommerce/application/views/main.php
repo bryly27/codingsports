@@ -34,10 +34,17 @@
         height: 150px;
       }
 
-      .banner {
+      .banner img{
         width: 100%;
       }
 
+      .leftbar {
+        margin-top: 200px;
+      }
+
+
+     
+     
   
     </style>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -80,17 +87,20 @@
 
 
     <div class="container-fluid">
+      <div class='banner'>
+        <img src="https://s3-us-west-1.amazonaws.com/codingdojoecommerce/background_images/sports-category-banner.jpg">
+      </div>
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span3 leftbar">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header"><a class="btn" data-toggle="collapse" data-target="#viewdetails">View details &raquo;</a></li>
-              <div class="collapse" id="viewdetails">
+              <!-- <li class="nav-header"><a class="btn" data-toggle="collapse" data-target="#viewdetails">Sort by: &raquo;</a></li> -->
+              <!-- <div class="collapse" id="viewdetails"> -->
                 <li><a href="/home/product/shirts">Shirts</a></li>
                 <li><a href="/home/product/shoes">Shoes</a></li>
                 <li><a href="/home/product/shorts">Shorts</a></li>
-              </div>              
-              </li>
+              <!-- </div>               -->
+              <!-- </li> -->
                 <form action='/home/search' method='post' class="navbar-form navbar-left" role="search">
                   <div class="form-group">
                     <input type="text" class="form-control" name="search" placeholder="Find a product">
