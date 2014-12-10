@@ -154,11 +154,12 @@
       <div class="container span12" id="similar_footer">
         <h3>Similar items</h3>
 <?php  
-
   foreach ($similars as $similar) 
   { ?>
     <div class="similar_info">
+      <a href='/detail/index/<?= $similar['id'] ?>'>
           <img class = "inline_angle_img" src="<?= $similar['photo'] ?>" alt="" width="100px" height="100px">
+        </a>
     </div>
 <?php
   }
