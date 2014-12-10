@@ -35,6 +35,7 @@ class admin_product extends CI_Model {
         $values = array($product['name'], $product['description'], $product['photo'], $product['price'], $product['category'], $product['type'], $product['gender'], $product['color'], $product['brand'], $product['model'], $product['inventory_count'], date("Y-m-d, H:i:s")); 
         return $this->db->query($query, $values);
     }
+
     
     // function get_product($email)
     // {
