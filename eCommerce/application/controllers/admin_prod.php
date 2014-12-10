@@ -80,9 +80,6 @@ class Admin_prod extends CI_Controller
       }
     }
     
-  
-
-
 
     public function logOff()
     {

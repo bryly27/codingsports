@@ -20,7 +20,7 @@
       <li><a href="/admin/show_orders">Dashboard</a></li>
       <li><a href="/admin/show_orders">Orders</a></li>
       <li><a href="/admin/show_products">Products</a></li>
-      <li class='logoff'><a href="#">Log Off</a></li>
+      <li class='logoff'><a href="/admin/logOff">Log Off</a></li>
         </ul>
     </div>
   </nav>

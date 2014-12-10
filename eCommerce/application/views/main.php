@@ -31,7 +31,7 @@
         }
 
       .product img {
-        height: 200px;
+        height: 150px;
       }
 
       .banner {
