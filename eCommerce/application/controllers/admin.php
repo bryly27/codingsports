@@ -14,28 +14,39 @@ class Admin extends CI_Controller
     {
        $this->load->view('admin');
        if($this->input->post('action') == 'login')
-       {
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        {
+          $email = $this->input->post('email');
+          $password = $this->input->post('password');
 
-        if($this->form_validation->run() == true)
-          redirect('/admin/show_orders');
-       }
+          $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+          $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+           if($this->form_validation->run() == true)
+           {
+              $this->load->model('admin_model');
+              $admin_data = $this->admin_model->get_admin_by_email($email);
+
+              if($admin_data->password == $password)
+              {
+                redirect('/admin/show_orders');
+              }
+              else
+                redirect('/admin');
+           }
+           else
+           {
+              redirect('/admin');
+           }
+
+        }
+
     }
 
     public function show_orders($orders_option = null)
     {
-
-      $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-      $this->form_validation->set_rules('password', 'Password', 'trim|required');
-
-      if($this->form_validation->run() == false)
-      {
         $this->load->model('order');
         $order_data = $this->order->get_all_orders(array('status' => $orders_option));
         $this->load->view('orders', array('orders' => $order_data));
-      }
-
     }
 
     public function search_orders()
@@ -50,7 +61,6 @@ class Admin extends CI_Controller
 
       public function show_products()
       {
-          // $this->load->view('/admin_products');
         redirect('/admin_prod/index');
       }
 
