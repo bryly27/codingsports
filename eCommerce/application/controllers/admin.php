@@ -72,7 +72,13 @@ class Admin extends CI_Controller
       $this->load->view('admin_order_detail', $info);
     }
 
+    public function update_status($status, $id)
+    {
+      $this->load->model('order');
+      $this->order->update($status, $id);
+      redirect('/admin/show_orders');
 
+    }
 
     public function logoff()
     {
