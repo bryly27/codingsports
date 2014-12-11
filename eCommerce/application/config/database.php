@@ -50,9 +50,6 @@ $active_record = TRUE;
 
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'root';
-
-$db['default']['database'] = 'eCommerceSports';
-
 $db['default']['database'] = 'ecommercesports';
 
 $db['default']['dbdriver'] = 'mysql';
