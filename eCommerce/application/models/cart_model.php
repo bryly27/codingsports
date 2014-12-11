@@ -54,8 +54,8 @@ class Cart_model extends CI_Model {
 
     function add_order($info)
     {
-        $query = "INSERT INTO orders (cust_id, order_status, bill_to_address, ship_to_address, order_total, created_at) VALUES (?,?,?,?,?,?)";
-        $values = array($info['cust_id'], $info['order_status'], $info['bill_to_address'], $info['ship_to_address'], $info['order_total'], date("Y-m-d, H:i:s"));
+        $query = "INSERT INTO orders (cust_id, order_status, bill_to_address, ship_to_address, shipping_price, order_total, created_at) VALUES (?,?,?,?,?,?,?)";
+        $values = array($info['cust_id'], $info['order_status'], $info['bill_to_address'], $info['ship_to_address'], $info['shipping_price'], $info['order_total'], date("Y-m-d, H:i:s"));
         $this->db->query($query, $values);
         return mysql_insert_id();
     }
