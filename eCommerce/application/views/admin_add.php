@@ -11,8 +11,10 @@
 				<p>Name: <input type='text' name='name'></p>
 				<p>Description: <textarea name='description'></textarea></p>
 				<p>Categories:	<select name='category'>
-													<option>Basketball</option>
-													<option>Running</option>
+													<option value='basketball'>Basketball</option>
+													<option value='running'>Running</option>
+													<option value='golf'>Golf</option>
+													<option value='tennis'>Tennis</option>
 												</select>
 				<p>or add new category: <input type='text' name='category'></p>
 				<p>Type:	<select name='type'>

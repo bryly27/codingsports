@@ -35,11 +35,11 @@
         </div>
 
         <div id="billing_info">
-            <p>Name: <?= $customer_info['first_name'].' '. $customer_info['last_name'] ?></p>
-            <p>Address: <?= $customer_info['address'].' '. $customer_info['address2'] ?></p>
-            <p>City: <?= $customer_info['city'] ?></p>
-            <p>State: <?= $customer_info['state'] ?></p>
-            <p>Zip: <?= $customer_info['zip_code'] ?></p>
+            <p>Name: <?= $billing['first_name'].' '. $billing['last_name'] ?></p>
+            <p>Address: <?= $billing['address'].' '. $billing['address2'] ?></p>
+            <p>City: <?= $billing['city'] ?></p>
+            <p>State: <?= $billing['state'] ?></p>
+            <p>Zip: <?= $billing['zip_code'] ?></p>
         </div>
     </div>
     <div id='table' class="table-responsive">
@@ -52,7 +52,7 @@
                     <th>Total</th>
             </thead>
             <tbody>
-<?php
+<?php 
         foreach ($products as $product)
         {   ?>
                     <tr>
@@ -81,7 +81,7 @@
                     </tr>
 
                     <tr class='table_totals'>
-                        <td>Status: Shipped</td>
+                        <td>Status: <?= $products[0]['order_status'] ?></td>
                         <td></td>
                         <td></td>
                         <td>Total Price</td>

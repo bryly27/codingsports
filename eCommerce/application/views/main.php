@@ -10,6 +10,7 @@
 
     <!-- Le styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <style type="text/css">
 
       body {
@@ -40,6 +41,10 @@
 
       .leftbar {
         margin-top: 200px;
+      }
+
+      .sort_button {
+        margin-left: -100px;
       }
 
 
@@ -99,6 +104,8 @@
                 <li><a href="/home/product/shirts">Shirts</a></li>
                 <li><a href="/home/product/shoes">Shoes</a></li>
                 <li><a href="/home/product/shorts">Shorts</a></li>
+                <li><a href="/home/product/equipment">Equipment</a></li>
+
               <!-- </div>               -->
               <!-- </li> -->
                 <form action='/home/search' method='post' class="navbar-form navbar-left" role="search">
@@ -118,7 +125,7 @@
           </ul>
         </nav>
         	<div class="dropdown container-fluid col-sm-offset-11">
-        	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        	  <button class="btn btn-default dropdown-toggle sort_button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
         	    Sort by
         	    <span class="caret"></span>
         	  </button>

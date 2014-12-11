@@ -10,7 +10,7 @@ class Admin extends CI_Controller
 
         $this->current_page = 1;
 
-        $this->output->enable_profiler();
+        // $this->output->enable_profiler();
         $this->load->library('form_validation');
         $this->load->helper('date');
     }
@@ -55,9 +55,6 @@ class Admin extends CI_Controller
     public function show_orders($orders_option = null)
     {
         $orders_id = $this->build_pagination($this->current_page);
-
-        // var_dump($orders_id);
-        // die();
 
         $this->load->model('order');
 
@@ -138,6 +135,7 @@ class Admin extends CI_Controller
     {
       $this->load->model('admin_product');
       $info['customer_info'] = $this->admin_product->get_customer_info($order);
+      $info['billing'] = $this->admin_product->get_billing($info['customer_info']['bill_to_address']);
       $info['products'] = $this->admin_product->get_order_info($order);
       $this->load->view('admin_order_detail', $info);
     }
