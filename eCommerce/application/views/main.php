@@ -13,7 +13,6 @@
                 $class_prev = 'disabled';
                 $href_prev = '#';
             }
-
             if (array_key_exists($next_page, $pages))
             {
                 $class_next = 'enabled';
@@ -38,16 +37,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 
     <style type="text/css">
-
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
-
       .sidebar-nav {
         padding: 9px 0;
       }
-
       @media (max-width: 980px) {
         /* Enable use of floated navbar text */
       }
@@ -56,24 +52,18 @@
           padding-left: 5px;
           padding-right: 5px;
         }
-
       .product img {
         height: 150px;
       }
-
       .banner img{
         width: 100%;
       }
-
       .leftbar {
         margin-top: 200px;
       }
-
       .sort_button {
         margin-left: -100px;
       }
-
-
     </style>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
 
@@ -148,18 +138,18 @@
             <li class='<?=$class_next?>'><a href='<?=$href_next?>'>Next</a></li>
           </ul>
         </nav>
-        	<div class="dropdown container-fluid col-sm-offset-11">
-        	  <button class="btn btn-default dropdown-toggle sort_button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-        	    Sort by
-        	    <span class="caret"></span>
-        	  </button>
-        	  <ul class="dropdown-menu sort_button" role="menu" aria-labelledby="dropdownMenu1">
-        	    <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_asc">Price$-$$$</a></li>
+          <div class="dropdown container-fluid col-sm-offset-11">
+            <button class="btn btn-default dropdown-toggle sort_button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              Sort by
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu sort_button" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_asc">Price$-$$$</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_desc">Price$$$-$</a></li>
-        	<!--     <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_asc/created_at">Newest-Oldest</a></li>
+          <!--     <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_asc/created_at">Newest-Oldest</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_desc/created_at">Oldest-Newest</a></li>
  -->        </ul>
-        	</div>
+          </div>
           <!-- <div class="row-fluid"> -->
 
 
@@ -190,14 +180,12 @@
 
             <li class='<?=$class_prev?>'><a href='<?=$href_prev?>'><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
 <?php
-
             foreach($pages as $key => $val)
             {
                 if($key == $current_page)
                     $class = 'active';
                 else
                     $class = 'inactive';
-
                 if($key !== 'current_page')
                 {
 ?>
@@ -209,7 +197,7 @@
             <li class='<?=$class_next?>'><a href='<?=$href_next?>'><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
             </ul>
         </nav>
-   		<footer>
+      <footer>
         <p>&copy; Footer</p>
       </footer>
 
