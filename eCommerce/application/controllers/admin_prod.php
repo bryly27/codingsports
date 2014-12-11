@@ -12,10 +12,17 @@ class Admin_prod extends CI_Controller
 
     public function index()
     {
-      $products_id = $this->build_pagination_products($this->current_page);
-      $this->load->model('admin_product');
-      $info['products'] = $this->admin_product->get_all_products($products_id);
-      $this->load->view('admin_products', $info);
+      if($this->session->userdata('access') == TRUE)
+      {
+        $products_id = $this->build_pagination_products($this->current_page);
+        $this->load->model('admin_product');
+        $info['products'] = $this->admin_product->get_all_products($products_id);
+        $this->load->view('admin_products', $info);
+      }
+      else
+      {
+        redirect('/');
+      }
     }
 
     public function search()

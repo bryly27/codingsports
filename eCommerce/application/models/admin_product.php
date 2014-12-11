@@ -72,4 +72,9 @@ class admin_product extends CI_Model {
         return false;
     }
 
+    public function get_billing($id)
+    {
+        return $this->db->query("SELECT addresses.* FROM addresses LEFT JOIN customers ON addresses.cust_id = customers.id LEFT JOIN orders ON customers.id = orders.cust_id AND orders.bill_to_address = addresses.id WHERE orders.bill_to_address = ?", $id)->row_array();
+    }
+
 }

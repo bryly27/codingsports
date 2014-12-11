@@ -4,8 +4,8 @@
 // var_dump($pages);
 // die();
 
-    // $this->session->sess_destroy();
-    // die();
+// $this->session->sess_destroy();
+// die();
 ?>
 
 <!DOCTYPE HTML>
@@ -29,8 +29,9 @@
             <li><a href="/admin/show_orders">Dashboard</a></li>
             <li><a href="/admin/show_orders">Orders</a></li>
             <li><a href="/admin/show_products">Products</a></li>
-            <li class='logoff'><a href="/admin/logoff">Log Off</a></li>
-
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li id='logoff'><a href="/admin/logOff">Log Off</a></li>
             </ul>
         </div>
     </nav>

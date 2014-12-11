@@ -4,6 +4,15 @@ class home extends CI_Controller
 {
 	public function index()
 	{
+		//Start a cart session when a user lands on the main page
+		if(!$this->session->userdata('cart'))
+		{
+			$cart = array(
+					'total_items' => 0,
+ 					);
+			$this->session->set_userdata('cart', $cart);
+		}
+
 		$this->load->model('products');
 		$info['products'] = $this->products->get_products();
 		$this->load->view('main', $info);

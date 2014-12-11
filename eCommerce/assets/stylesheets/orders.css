@@ -20,10 +20,9 @@
   background-color: #31B0D5;
 }
 
-/*.logoff{
-    float: right;
-    margin-right: 50px;
-}*/
+#logoff{
+    padding-right: 70px;
+}
 
 #table{
     max-width: 1190px;

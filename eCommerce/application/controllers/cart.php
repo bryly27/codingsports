@@ -1,8 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Cart extends CI_Controller 
+class Cart extends CI_Controller
 {
-	protected $show_cart = array();
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
@@ -11,18 +10,18 @@ class Cart extends CI_Controller
 
 	public function index()
 	{
-		if(!$this->session->userdata('cart'))
-		{
-			$cart = array(
-								'total_items' => 0,
- 									);
-			$this->session->set_userdata('cart', $cart);
-		}
+		// if(!$this->session->userdata('cart'))
+		// {
+		// 	$cart = array(
+		// 						'total_items' => 0,
+ 	// 								);
+		// 	$this->session->set_userdata('cart', $cart);
+		// }
 		$cart = $this->session->userdata('cart');
 		$show_cart = array();
 		$total_price = 0;
-		
-		foreach ($cart as $key => $value) 
+
+		foreach ($cart as $key => $value)
 		{
 			if($key != 'total_items')
 			{
@@ -42,7 +41,7 @@ class Cart extends CI_Controller
 		// var_dump($send);
 		// die();
 		$this->load->view('cart', $send);
-	
+
 	}
 
 	public function addToCart()
@@ -54,7 +53,7 @@ class Cart extends CI_Controller
 		$item = $this->Cart_model->get_item($product_id); //returns ALL info about the product
 
 		$cart = $this->session->userdata('cart');
-		
+
 		if(array_key_exists($product_id, $cart))
 		{
 			$cart['total_items'] = $cart['total_items'] + $quantity;
@@ -112,9 +111,9 @@ class Cart extends CI_Controller
 		);
 		//Add the shipping info to the db
 		$add_row_id = $this->Cart_model->add_cust_address($user);
-		//If ALL shipping and billing fields match then we only need to add one entry to the db and use the same ID for both the shipping and billing		
-		if(($user['first_name'] == $buser['first_name']) 
-			&& ($user['last_name'] == $buser['last_name']) 
+		//If ALL shipping and billing fields match then we only need to add one entry to the db and use the same ID for both the shipping and billing
+		if(($user['first_name'] == $buser['first_name'])
+			&& ($user['last_name'] == $buser['last_name'])
 			&& ($user['address'] == $buser['address'])
 			&& ($user['address_2'] == $buser['address_2'])
 			&& ($user['city'] == $buser['city'])
@@ -129,8 +128,8 @@ class Cart extends CI_Controller
 		{
 			$add_billing_row_id = $this->Cart_model->add_cust_address($buser);
 		}
-		
-		//Get the customer's payment info from POST 
+
+		//Get the customer's payment info from POST
 		$customer = array(
 		   'first_name' => $this->input->post('firstname'),
 		   'last_name' => $this->input->post('lastname'),
@@ -161,8 +160,8 @@ class Cart extends CI_Controller
 		$cart = $this->session->userdata('cart');
 		$show_cart = array();
 		$total_price = 0;
-		
-		foreach ($cart as $key => $value) 
+
+		foreach ($cart as $key => $value)
 		{
 			if($key != 'total_items')
 			{
@@ -181,11 +180,12 @@ class Cart extends CI_Controller
 		//-----------------End of refactor section-------------------------------
 		//Create an array to pass to model to insert into ORDERS table
 		$order_info = array(
-		   'cust_id' => $customer_id['id'], 
+		   'cust_id' => $customer_id['id'],
 		   // 'cust_id' => "1",
 		   'ship_to_address' => $add_row_id,
 		   'bill_to_address' => $add_billing_row_id,
-		   'order_status' => "New order",
+		   'order_status' => "New",
+		   'shipping_price' => "9.99",
 		   // 'ship_to_address' => "2",
 		   // 'bill_to_address' => "3",
 		   'order_total' => $show_cart['total_price']
