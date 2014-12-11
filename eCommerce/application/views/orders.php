@@ -23,7 +23,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse active background navbar-fixed-top">
         <div id="navbar">
             <ul class="nav navbar-nav navbar-left">
             <li><a href="/admin/show_orders">Dashboard</a></li>
@@ -48,7 +48,7 @@
         </form>
 
     </div>
-    <div id='select_search' class="btn-group">
+    <div id='select_search' class="btn-group  pull-right">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             Order Status <span class="caret"></span>
         </button>

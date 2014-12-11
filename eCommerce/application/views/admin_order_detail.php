@@ -19,7 +19,9 @@
             <li><a href="/admin/show_orders">Dashboard</a></li>
             <li><a href="/admin/show_orders">Orders</a></li>
             <li><a href="/admin_prod/index">Products</a></li>
-            <li class='logoff'><a href="/admin">Log Off</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li id='logoff'><a href="/admin/logOff">Log Off</a></li>
             </ul>
         </div>
     </nav>
@@ -68,7 +70,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>Sub Total</td>
+                        <td class='order_totals'>Sub Total:</td>
                         <td><?= $products[0]['order_total'] ?></td>
                     </tr>
 
@@ -76,15 +78,15 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>Shipping</td>
+                        <td class='order_totals'>Shipping:</td>
                         <td><?= $products[0]['shipping_price'] ?></td>
                     </tr>
 
                     <tr class='table_totals'>
-                        <td>Status: <?= $products[0]['order_status'] ?></td>
+                        <td class='order_status'>Status: <?= $products[0]['order_status'] ?></td>
                         <td></td>
                         <td></td>
-                        <td>Total Price</td>
+                        <td class='order_totals'>Total Price:</td>
                         <td><?= $products[0]['order_total'] + $products[0]['shipping_price'] ?></td>
                     </tr>
             </tbody>

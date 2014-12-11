@@ -49,3 +49,16 @@
 .img {
     width: 50px;
 }
+
+#navbar ul > li > a:hover{
+    color: #31B0D5;
+}
+
+#navbar ul > #logoff > a:hover{
+    color: red;
+}
+
+#navbar ul > li > a{
+    color: #bdc4cb;
+}
+

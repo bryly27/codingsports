@@ -19,7 +19,9 @@
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Orders</a></li>
             <li><a href="#">Products</a></li>
-            <li class='logoff'><a href="#">Log Off</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li id='logoff'><a href="/admin/logOff">Log Off</a></li>
             </ul>
         </div>
     </nav>
