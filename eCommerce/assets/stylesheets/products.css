@@ -1,5 +1,5 @@
 
-.search, .add_product{
+#search, #add_product{
     width: 150px;
     margin-top: 80px;
     display: inline-block;
@@ -10,15 +10,19 @@
     width: 250px;
 }
 
-.add_product{
-    float:right;
-    margin-right: 400px;
+#add_product{
+    padding-right: 70px;
 }
 
-/*.logoff{
-    float: right;
-    margin-right: 50px;
-}*/
+
+#logoff{
+    padding-right: 70px;
+}
+
+#add_product button{
+  color: white;
+  background-color: #31B0D5;
+}
 
 #table{
     max-width: 1190px;

@@ -2,9 +2,19 @@
 
 class admin_product extends CI_Model {
 
-    function get_products()
+    public function get_all_products($products_id)
     {
-        return $this->db->query("SELECT * FROM products")->result_array();
+        $this->db->select ('*');
+        $this->db->from('products');
+
+        if(!empty($products_id))
+            $this->db->where_in('id', $products_id);
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0)
+            return $query->result_array();
+        return false;
     }
 
     function get_product($id)
@@ -46,41 +56,20 @@ class admin_product extends CI_Model {
         return $this->db->query("SELECT order_items.*, orders.*, products.* FROM products LEFT JOIN order_items ON products.id = order_items.product_id LEFT JOIN orders ON order_items.order_id = orders.id WHERE orders.id = '$order'")->result_array();
     }
 
+    public function get_count_all()
+    {
+        return $this->db->count_all('products');
+    }
 
-    // function get_product($email)
-    // {
-    //     return $this->db->query("SELECT * FROM  WHERE email = ?", array($email))->row_array();
-    // }
-
-    // function get_user($email)
-    // {
-    //     return $this->db->query("SELECT id, first_name, last_name, email, password FROM users WHERE email = ?", $email)->row_array();
-    // }
-
-
-
-    // function get_messages()
-    // {
-    //     return $this->db->query("SELECT messages.*, users.first_name, users.last_name FROM messages LEFT JOIN users ON users.id = messages.user_id ORDER BY id DESC")->result_array();
-    // }
-
-    // function add_message($message)
-    // {
-    //     $query = "INSERT INTO messages (user_id, message, created_at) VALUES (?,?,?)";
-    //     $values = array($message['user_id'], $message['message'], date("Y-m-d, H:i:s"));
-    //     return $this->db->query($query, $values);
-    // }
-
-    // function get_comments()
-    // {
-    //     return $this->db->query("SELECT comments.*, users.first_name, users.last_name FROM comments LEFT JOIN users ON users.id = comments.user_id")->result_array();
-    // }
-
-    // function add_comment($comment)
-    // {
-    //     $query = "INSERT INTO comments (messages_id, user_id, comment, created_at) VALUES (?,?,?,?)";
-    //     $values = array($comment['messages_id'], $comment['user_id'], $comment['comment'], date("Y-m-d, H:i:s"));
-    //     return $this->db->query($query, $values);
-    // }
+    public function get_products_per_page($offset, $limit)
+    {
+        $this->db->select ( 'products.id' );
+        $this->db->from ( 'products' );
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get();
+        if($query->num_rows() > 0)
+            return $query->result();
+        return false;
+    }
 
 }

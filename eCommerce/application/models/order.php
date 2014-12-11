@@ -17,7 +17,6 @@ class Order extends CI_Model
         $data = array(
                        'order_status' => $status
                     );
-
         $this->db->update('orders', $data, array('id' => $id));
     }
 
@@ -80,7 +79,6 @@ class Order extends CI_Model
         $this->db->where($where);
 
         $query = $this->db->get();
-        return $query->result();
 
         if($query->num_rows() > 0)
             return $query->result();
