@@ -76,7 +76,7 @@
         </table>
 
         <div class='pagination'>
-        <nav>
+        <nav class="text-center">
             <ul class="pagination">
 
 <?php

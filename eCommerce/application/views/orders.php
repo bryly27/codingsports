@@ -98,7 +98,7 @@
         </table>
 
         <div id='pagination'>
-        <nav>
+        <nav class="text-center">
             <ul class="pagination">
 <?php
             $pages = $this->session->userdata('pages');

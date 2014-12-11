@@ -1,3 +1,30 @@
+<?php
+            $pages = $this->session->userdata('pages');
+            $current_page = $pages['current_page'];
+            $prev_page = $current_page - 1;
+            $next_page = $current_page + 1;
+            if (array_key_exists($prev_page, $pages))
+            {
+                $class_prev = 'enabled';
+                $href_prev = '/home/show_pagination/' .$prev_page;
+            }
+            else
+            {
+                $class_prev = 'disabled';
+                $href_prev = '#';
+            }
+
+            if (array_key_exists($next_page, $pages))
+            {
+                $class_next = 'enabled';
+                $href_next = '/home/show_pagination/' .$next_page;
+            }
+            else
+            {
+                $class_next = 'disabled';
+                $href_next = '#';
+            }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,9 +74,6 @@
       }
 
 
-
-
-
     </style>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
 
@@ -92,7 +116,7 @@
 
 
     <div class="container-fluid">
-      <div class='banner'>
+      <div id='image_banner' class='banner'>
         <img src="https://s3-us-west-1.amazonaws.com/codingdojoecommerce/background_images/sports-category-banner.jpg">
       </div>
       <div class="row-fluid">
@@ -120,8 +144,8 @@
         <div class="span9">
         <nav>
           <ul class="pager">
-            <li><a href="#">Previous</a></li>
-            <li><a href="#">Next</a></li>
+            <li class='<?=$class_prev?>'><a href='<?=$href_prev?>'>Previous</a></li>
+            <li class='<?=$class_next?>'><a href='<?=$href_next?>'>Next</a></li>
           </ul>
         </nav>
         	<div class="dropdown container-fluid col-sm-offset-11">
@@ -163,15 +187,28 @@
 
       <nav class="text-center">
       <ul class="pagination">
-        <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-       </ul>
-   		</nav>
+
+            <li class='<?=$class_prev?>'><a href='<?=$href_prev?>'><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+<?php
+
+            foreach($pages as $key => $val)
+            {
+                if($key == $current_page)
+                    $class = 'active';
+                else
+                    $class = 'inactive';
+
+                if($key !== 'current_page')
+                {
+?>
+                <li class='<?=$class?>'><a href="/home/show_pagination/<?=$key?>"><?=$key?><span class="sr-only">(current)</span></a></li>
+<?php
+                }
+            }
+?>
+            <li class='<?=$class_next?>'><a href='<?=$href_next?>'><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+            </ul>
+        </nav>
    		<footer>
         <p>&copy; Footer</p>
       </footer>
