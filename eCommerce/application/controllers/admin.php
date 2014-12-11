@@ -17,7 +17,6 @@ class Admin extends CI_Controller
 
     public function index()
     {
-
        $this->load->view('admin');
        if($this->input->post('action') == 'login')
         {
@@ -37,14 +36,17 @@ class Admin extends CI_Controller
                   if($admin_data->password == $password and $admin_data->email == $email)
                   {
                     $current_page = 1;
+                    $this->session->set_userdata('access', TRUE);
                     redirect('/admin/show_orders');
                   }
               }
               else
+                  $this->session->set_userdata('access', FALSE);
                   redirect('/admin');
            }
            else
            {
+              $this->session->set_userdata('access', FALSE);
               redirect('/admin');
            }
 
@@ -53,13 +55,18 @@ class Admin extends CI_Controller
     }
 
     public function show_orders($orders_option = null)
-    {
-        $orders_id = $this->build_pagination($this->current_page);
-
-        $this->load->model('order');
-
-        $order_data = $this->order->get_all_orders(array('status' => $orders_option), $orders_id);
-        $this->load->view('orders', array('orders' => $order_data));
+    {   
+        if($this->session->userdata('access') == TRUE)
+        {
+          $orders_id = $this->build_pagination($this->current_page);
+          $this->load->model('order');
+          $order_data = $this->order->get_all_orders(array('status' => $orders_option), $orders_id);
+          $this->load->view('orders', array('orders' => $order_data));
+        } 
+        else
+        {
+          redirect('/');
+        }
 
     }
 
@@ -107,45 +114,71 @@ class Admin extends CI_Controller
 
     public function show_paginated_orders($current_page)
     {
-        if($current_page > 0)
-        {
-            $this->current_page = $current_page;
-            $this->show_orders();
-        }
+      if($current_page > 0)
+      {
+          $this->current_page = $current_page;
+          $this->show_orders();
+      }
+      else
+      {
+        redirect('/');
+      }
     }
 
 
 
     public function search_orders()
     {
-        $search = $this->input->post('search');
-
-        $this->load->model('order');
-        $order_data = $this->order->get_all_orders(array('search' => $search), null);
-        $this->load->view('orders', array('orders' => $order_data));
+      $search = $this->input->post('search');
+      $this->load->model('order');
+      $order_data = $this->order->get_all_orders(array('search' => $search), null);
+      $this->load->view('orders', array('orders' => $order_data));
 
     }
 
     public function show_products()
     {
-      redirect('/admin_prod/index');
+      if($this->session->userdata('access')== TRUE)
+      {
+        redirect('/admin_prod/index');
+      }
+      else
+      {
+        redirect('/');
+      }
+      
     }
 
     public function order_details($order)
     {
-      $this->load->model('admin_product');
-      $info['customer_info'] = $this->admin_product->get_customer_info($order);
-      $info['billing'] = $this->admin_product->get_billing($info['customer_info']['bill_to_address']);
-      $info['products'] = $this->admin_product->get_order_info($order);
-      $this->load->view('admin_order_detail', $info);
+      if($this->session->userdata('access') == TRUE)
+      {
+        $this->load->model('admin_product');
+        $info['customer_info'] = $this->admin_product->get_customer_info($order);
+        $info['billing'] = $this->admin_product->get_billing($info['customer_info']['bill_to_address']);
+        $info['products'] = $this->admin_product->get_order_info($order);
+        $this->load->view('admin_order_detail', $info);
+      }
+      else
+      {
+        redirect('/');
+      }
     }
 
     public function update_status($status, $id)
     {
-      $this->load->model('order');
-      $this->order->update($status, $id);
-      redirect('/admin/show_orders');
+      if($this->session->userdata('access') == TRUE)
+      {
+        $this->load->model('order');
+        $this->order->update($status, $id);
+        redirect('/admin/show_orders');
+      }
+      else
+      {
+        redirect('/');
+      }
 
+     
     }
 
     public function logoff()

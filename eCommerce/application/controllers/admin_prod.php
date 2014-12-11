@@ -1,13 +1,20 @@
-f<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin_prod extends CI_Controller
 {
 
     public function index()
     {
-      $this->load->model('admin_product');
-      $info['products'] = $this->admin_product->get_products();
-      $this->load->view('admin_products', $info);
+      if($this->session->userdata('access') == TRUE)
+      {
+        $this->load->model('admin_product');
+        $info['products'] = $this->admin_product->get_products();
+        $this->load->view('admin_products', $info);
+      }
+      else
+      {
+        redirect('/');
+      }
     }
 
     public function search()
