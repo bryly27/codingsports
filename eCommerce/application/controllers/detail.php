@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Detail extends CI_Controller 
+class Detail extends CI_Controller
 {
 	public function index($id)
 	{
@@ -10,7 +10,7 @@ class Detail extends CI_Controller
 		$this->load->view('show', $info);
 	}
 
-	
 
-	
+
+
 }

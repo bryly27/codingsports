@@ -1,14 +1,11 @@
 <?php
 
-$pages = $this->session->userdata('pages');
-$orders_page = $this->session->userdata('orders_page');
-
 // var_dump($orders_page);
 // var_dump($pages);
 // die();
 
-    // $this->session->sess_destroy();
-    // die();
+// $this->session->sess_destroy();
+// die();
 ?>
 
 <!DOCTYPE HTML>
@@ -29,10 +26,12 @@ $orders_page = $this->session->userdata('orders_page');
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div id="navbar">
             <ul class="nav navbar-nav navbar-left">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Orders</a></li>
+            <li><a href="/admin/show_orders">Dashboard</a></li>
+            <li><a href="/admin/show_orders">Orders</a></li>
             <li><a href="/admin/show_products">Products</a></li>
-            <li class='logoff'><a href="/admin/logoff">Log Off</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li id='logoff'><a href="/admin/logOff">Log Off</a></li>
             </ul>
         </div>
     </nav>
@@ -99,17 +98,17 @@ $orders_page = $this->session->userdata('orders_page');
         </table>
 
         <div id='pagination'>
-        <nav>
+        <nav class="text-center">
             <ul class="pagination">
 <?php
-
+            $pages = $this->session->userdata('pages');
             $current_page = $pages['current_page'];
             $prev_page = $current_page - 1;
             $next_page = $current_page + 1;
             if (array_key_exists($prev_page, $pages))
             {
                 $class_prev = 'enabled';
-                $href_prev = '/admin/show_paginated_orders/<?=$prev_page?>';
+                $href_prev = '/admin/show_paginated_orders/' .$prev_page;
             }
             else
             {
@@ -120,7 +119,7 @@ $orders_page = $this->session->userdata('orders_page');
             if (array_key_exists($next_page, $pages))
             {
                 $class_next = 'enabled';
-                $href_next = '/admin/show_paginated_orders/<?=$next_page?>';
+                $href_next = '/admin/show_paginated_orders/' .$next_page;
             }
             else
             {

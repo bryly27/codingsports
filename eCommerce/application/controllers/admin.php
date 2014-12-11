@@ -55,34 +55,33 @@ class Admin extends CI_Controller
     }
 
     public function show_orders($orders_option = null)
-    {   
+    {
         if($this->session->userdata('access') == TRUE)
         {
-          $orders_id = $this->build_pagination($this->current_page);
+          $orders_id = $this->build_pagination_orders($this->current_page);
           $this->load->model('order');
           $order_data = $this->order->get_all_orders(array('status' => $orders_option), $orders_id);
           $this->load->view('orders', array('orders' => $order_data));
-        } 
+        }
         else
         {
           redirect('/');
         }
-
     }
 
 
-    public function build_pagination($current_page)
+    public function build_pagination_orders($current_page)
     {
         $pages = array();
         $pages['current_page'] = $current_page;
-        $prev_page = $current_page - 1;
-        $next_page = $current_page + 1;
+        // $prev_page = $current_page - 1;
+        // $next_page = $current_page + 1;
 
 
         $this->load->model('order');
         $order_count_all = $this->order->get_count_all();
 
-        $limit = 5;
+        $limit = 10;
         $count_pages = ceil($order_count_all / $limit);
 
         if($current_page == 0)
@@ -125,8 +124,6 @@ class Admin extends CI_Controller
       }
     }
 
-
-
     public function search_orders()
     {
       $search = $this->input->post('search');
@@ -146,7 +143,7 @@ class Admin extends CI_Controller
       {
         redirect('/');
       }
-      
+
     }
 
     public function order_details($order)
@@ -178,11 +175,12 @@ class Admin extends CI_Controller
         redirect('/');
       }
 
-     
+
     }
 
     public function logoff()
     {
+        $this->session->sess_destroy();
         redirect('/admin');
     }
 

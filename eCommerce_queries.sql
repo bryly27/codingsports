@@ -31,5 +31,8 @@ select a.id, a.order_status, a.order_total, a.bill_to_address, b.first_name, a.c
     and c.cust_id = a.cust_id;
 
 
+SELECT * FROM ecommercesports.orders LIMIT 10, 5;
+
+
 
 

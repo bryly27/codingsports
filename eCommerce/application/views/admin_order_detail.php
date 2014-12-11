@@ -52,7 +52,7 @@
                     <th>Total</th>
             </thead>
             <tbody>
-<?php 
+<?php
         foreach ($products as $product)
         {   ?>
                     <tr>
