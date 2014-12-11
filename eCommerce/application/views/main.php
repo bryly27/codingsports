@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <!-- Le styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
     <style type="text/css">
 
       body {
@@ -66,6 +65,7 @@
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
 
   <body>
@@ -129,7 +129,7 @@
         	    Sort by
         	    <span class="caret"></span>
         	  </button>
-        	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        	  <ul class="dropdown-menu sort_button" role="menu" aria-labelledby="dropdownMenu1">
         	    <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_asc">Price$-$$$</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_desc">Price$$$-$</a></li>
         	<!--     <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_asc/created_at">Newest-Oldest</a></li>

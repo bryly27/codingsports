@@ -2,7 +2,6 @@
 
 class Cart extends CI_Controller 
 {
-	protected $show_cart = array();
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
@@ -11,13 +10,13 @@ class Cart extends CI_Controller
 
 	public function index()
 	{
-		if(!$this->session->userdata('cart'))
-		{
-			$cart = array(
-								'total_items' => 0,
- 									);
-			$this->session->set_userdata('cart', $cart);
-		}
+		// if(!$this->session->userdata('cart'))
+		// {
+		// 	$cart = array(
+		// 						'total_items' => 0,
+ 	// 								);
+		// 	$this->session->set_userdata('cart', $cart);
+		// }
 		$cart = $this->session->userdata('cart');
 		$show_cart = array();
 		$total_price = 0;
@@ -185,7 +184,8 @@ class Cart extends CI_Controller
 		   // 'cust_id' => "1",
 		   'ship_to_address' => $add_row_id,
 		   'bill_to_address' => $add_billing_row_id,
-		   'order_status' => "New order",
+		   'order_status' => "New",
+		   'shipping_price' => "9.99",
 		   // 'ship_to_address' => "2",
 		   // 'bill_to_address' => "3",
 		   'order_total' => $show_cart['total_price']

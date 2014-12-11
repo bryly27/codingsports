@@ -49,7 +49,10 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['username'] = 'root';
+
 $db['default']['password'] = 'root';
+
+
 $db['default']['database'] = 'eCommerceSports';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
