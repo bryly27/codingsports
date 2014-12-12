@@ -77,7 +77,8 @@ class Order extends CI_Model
 
         if(strlen($where) > 0)
         $this->db->where($where);
-
+    
+        $this->db->order_by( 'a.id', 'desc');
         $query = $this->db->get();
 
         if($query->num_rows() > 0)
