@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
-$db['default']['database'] = 'ecommercesports';
+$db['default']['username'] = 'speakiu6_bryly27';
+$db['default']['password'] = 'Itiswhatitis27!';
+$db['default']['database'] = 'speakiu6_ecommerce';
 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
