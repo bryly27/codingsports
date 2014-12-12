@@ -142,12 +142,12 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-        <nav>
+        <nav class="text-center">
           <ul class="pager">
             <li class='<?=$class_prev?>'><a href='<?=$href_prev?>'>Previous</a></li>
             <li class='<?=$class_next?>'><a href='<?=$href_next?>'>Next</a></li>
           </ul>
-        </nav>
+        </nav >
         	<div class="dropdown container-fluid col-sm-offset-11">
         	  <button class="btn btn-default dropdown-toggle sort_button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
         	    Sort by
@@ -164,8 +164,6 @@
 
 
 <?php
-// var_dump($products);
-// die();
   foreach ($products as $product)
   { ?>
     <div class="span3 product">

@@ -48,10 +48,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'aa1q6jwegsk4o80.c1niyvgxpmne.us-west-2.rds.amazonaws.com:3306';
+$db['default']['hostname'] = 'demoecommercedb.c1niyvgxpmne.us-west-2.rds.amazonaws.com';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'Koppule9';
-$db['default']['database'] = 'ecommercesports';
+$db['default']['password'] = 'rootroot';
+$db['default']['database'] = 'demoecommerce';
+$db['default']['port']     = '3306';
 
 
 $db['default']['dbdriver'] = 'mysql';
