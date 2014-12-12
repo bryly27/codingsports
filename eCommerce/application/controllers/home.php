@@ -95,6 +95,9 @@ class home extends CI_Controller
 	        $pages[$i] = $offset;
 	    }
 
+	    var_dump($pages);
+	    die();
+
 	    $items_id = $this->products->get_items_per_page($pages[$current_page], $limit);
 
 	    $array_item_id = array();
