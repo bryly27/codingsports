@@ -36,7 +36,6 @@
     <meta name="author" content="">
     <!-- Le styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -66,6 +65,7 @@
         margin-left: -100px;
       }
     </style>
+
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -76,11 +76,49 @@
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function(){ 
+
+        $.post(
+          "/home/show_products", function(output){
+            $('#display').html(output);
+          });
+
+//============= search bar ==================
+        $("#search").on('keyup', function(){
+          $.post(
+            $("#submit").attr('action'),
+            $("#submit").serialize(),
+            function(output){
+              $('#display').html(output);
+            }
+          );
+          return false;
+        });
+
+//============== a tags ====================
+        $(document).on('click', '#search_category', function(){
+          event.preventDefault();
+            var form = $(this);
+          $.post(
+              form.attr('href'),
+              form.serialize(),
+            function(output){
+              $('#display').html(output);
+            }
+          );
+          return false;
+        });
+
+
+      });
+    </script>
   </head>
 
   <body>
@@ -122,18 +160,20 @@
             <ul class="nav nav-list">
               <!-- <li class="nav-header"><a class="btn" data-toggle="collapse" data-target="#viewdetails">Sort by: &raquo;</a></li> -->
               <!-- <div class="collapse" id="viewdetails"> -->
-                <li><a href="/home/product/shirts">Shirts</a></li>
-                <li><a href="/home/product/shoes">Shoes</a></li>
-                <li><a href="/home/product/shorts">Shorts</a></li>
-                <li><a href="/home/product/equipment">Equipment</a></li>
+                <li><a id='search_category' href="/home/show_products">Show All</a></li>
+                <li class="divider"></li>
+                <li><a id='search_category' href="/home/product/shirts">Shirts</a></li>
+                <li><a id='search_category' href="/home/product/shoes">Shoes</a></li>
+                <li><a id='search_category' href="/home/product/shorts">Shorts</a></li>
+                <li><a id='search_category' href="/home/product/equipment">Equipment</a></li>
 
               <!-- </div>               -->
               <!-- </li> -->
-                <form action='/home/search' method='post' class="navbar-form navbar-left" role="search">
+                <form id="submit" action='/home/search' method='post' class="navbar-form navbar-left" role="search">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="search" placeholder="Find a product">
+                    <input id="search" type="text" class="form-control" name="search" placeholder="Find a product">
                   </div>
-                  <button type="submit" class="glyphicon glyphicon-search"></button>
+                  <!-- <button type="submit" class="glyphicon glyphicon-search"></button> -->
                 </form>
               </ul>
           </div><!--/.well -->
@@ -160,19 +200,10 @@
           </div>
           <!-- <div class="row-fluid"> -->
 
+<div id='display'>
+</div>
 
-<?php
-  foreach ($products as $product)
-  { ?>
-    <div class="span3 product">
-      <a href="/detail/index/<?= $product['id'] ?>"><img src="<?= $product['photo'] ?>">
-      <p><?= $product['name'] ?></p>
-      <p><?= $product['price'] ?></p>
-      <p><a class="btn" href="/detail/index/<?= $product['id'] ?>">View details &raquo;</a></p></a>
-    </div>
-<?php
-  }
-?>
+
 
           <!-- </div><!/row-->
         </div><!--/span-->

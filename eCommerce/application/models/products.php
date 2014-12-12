@@ -19,6 +19,7 @@ class products extends CI_Model {
         return false;
     }
 
+
     function get_products_price_asc()
     {
         return $this->db->query("SELECT * FROM products ORDER BY price ASC")->result_array();

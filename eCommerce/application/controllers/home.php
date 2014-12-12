@@ -21,10 +21,19 @@ class home extends CI_Controller
 			$this->session->set_userdata('cart', $cart);
 		}
 
+		// $items_id = $this->build_pagination($this->current_page);
+		// $this->load->model('products');
+		// $info['products'] = $this->products->get_products($items_id);
+		$this->load->view('main');
+	
+	}
+
+	public function show_products()
+	{
 		$items_id = $this->build_pagination($this->current_page);
 		$this->load->model('products');
 		$info['products'] = $this->products->get_products($items_id);
-		$this->load->view('main', $info);
+		$this->load->view('main_partial', $info);
 	}
 
 
@@ -48,14 +57,14 @@ class home extends CI_Controller
 		$this->load->model('products');
 		$name = $this->input->post('search');
 		$info['products'] = $this->products->search($name);
-		$this->load->view('main', $info);
+		$this->load->view('main_partial', $info);
 	}
 
 	public function product($type)
 	{
 		$this->load->model('products');
 		$info['products'] = $this->products->type($type);
-		$this->load->view('main', $info);
+		$this->load->view('main_partial', $info);
 	}
 
 	public function cart()

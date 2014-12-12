@@ -48,24 +48,14 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-
-// $db['default']['hostname'] = 'demoecommercedb.c1niyvgxpmne.us-west-2.rds.amazonaws.com';
-// $db['default']['username'] = 'root';
-// $db['default']['password'] = 'rootroot';
-// $db['default']['database'] = 'demoecommerce';
-// $db['default']['port']     = '3306';
-
-
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
-$db['default']['database'] = 'eCommerceSports';
-$db['default']['port']     = '3306';
-
+$db['default']['username'] = 'speakiu6_bryly27';
+$db['default']['password'] = 'Itiswhatitis27!';
+$db['default']['database'] = 'speakiu6_ecommerce';
 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = FALSE;
+$db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
 $db['default']['char_set'] = 'utf8';

@@ -1,0 +1,11 @@
+branch-defaults:
+  default:
+    environment: demoEcommerce
+  master:
+    environment: demoEcommerce
+global:
+  application_name: demo_ecommerce
+  default_ec2_keyname: arjun92275
+  default_platform: 64bit Amazon Linux 2014.09 v1.0.9 running PHP 5.5
+  default_region: us-west-2
+  profile: eb-cli

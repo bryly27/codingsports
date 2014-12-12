@@ -10,6 +10,7 @@
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <!-- Custom CSS Style-->
+
 <link href="/assets/stylesheets/admin.css" rel="stylesheet">
 <!-- jquery always goes before the bootstrap java script -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
