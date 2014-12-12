@@ -1,7 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+require_once(APPPATH.'libraries/Stripe/lib/Stripe.php');
 class Cart extends CI_Controller
 {
+	protected $data;
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
@@ -38,8 +39,10 @@ class Cart extends CI_Controller
 		}
 		$show_cart['total_price'] = $total_price;
 		$send['cart'] = $show_cart;
-		// var_dump($send);
+		// $send['pay_status'] = $this->data;
+		// var_dump($this->data);
 		// die();
+		// $this->load->view('cart', $send);
 		$this->load->view('cart', $send);
 
 	}
@@ -49,7 +52,7 @@ class Cart extends CI_Controller
 
 		$product_id = $this->input->post('prod_id');
 		$quantity = $this->input->post('quantity');
-		// $post_data = $this->input->post();
+
 		$item = $this->Cart_model->get_item($product_id); //returns ALL info about the product
 
 		$cart = $this->session->userdata('cart');
@@ -203,7 +206,76 @@ class Cart extends CI_Controller
 			$this->Cart_model->add_order_item($order_info_items);
 		}
 		//NEED TO UNSET THE WHOLE CART HERE, maybe add in flash session messages
-		redirect(base_url());
+		//redirect(base_url());
+	}
+
+	public function stripe()
+	{
+		$this->load->view('stripe');
+	}
+
+	public function post_pay()
+	{
+		if($this->session->userdata('paid')=="1") {
+		    $this->pay(); //If Stripe API returned 1 then have the orders added to the DB
+
+		 }
+		elseif($this->session->userdata('paid')=="0") {
+			redirect("/cart");
+		 }
+	}
+
+	public function post()
+	{
+		// var_dump($this->input->post());
+		// die();
+		// Set your secret key: remember to change this to your live secret key in production
+		// See your keys here https://dashboard.stripe.com/account
+		Stripe::setApiKey("sk_test_OC5ocu6mbMsOB5NCSV6L8o83");
+		$error = '';
+		$success = '';
+		$view_data['stripe_response'] = '';
+
+		// Get the credit card details submitted by the form
+		$token = $_POST['stripeToken'];
+
+		// Create the charge on Stripe's servers - this will charge the user's card
+		try {
+		$charge = Stripe_Charge::create(array(
+		  "amount" => 1000, // amount in cents, again
+		  "currency" => "usd",
+		  "card" => $token,
+		  "description" => "payinguser@example.com")
+		);
+		    $view_data['stripe_response'] = '<div class="alert alert-success">
+		                <strong>Success!</strong> Your payment was successful.
+						</div>';
+			$view_data['message'] = TRUE;
+			$this->session->set_userdata('paid', "1");
+			$this->pay();
+			redirect(base_url());
+		} catch(Stripe_CardError $e) {
+		  // The card has been declined
+			$view_data['stripe_response'] = '<div class="alert alert-danger">
+					  <strong>Error!</strong> '.$e->getMessage().'
+					  </div>';
+			$view_data['message'] = FALSE;
+			$this->session->set_userdata('paid', "0");
+		}
+		// $post_data = $this->input->post();
+		// var_dump($charge);
+		// $this->output
+		//      ->set_content_type('application/json')
+		//      ->set_output($charge);
+		// var_dump($view_data);
+		// die();
+		
+		$this->load->view('stripe', $view_data);
+	}
+
+	public function test()
+	{
+		var_dump($this->input->post());
 	}
 
 }

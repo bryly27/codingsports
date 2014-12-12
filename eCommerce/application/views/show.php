@@ -111,8 +111,8 @@
           <div class="row-fluid">
             <div class="span9">
               <h2></h2> <!--This H2 is empty to for the P below to be aligned to the image -->
-              <h1><?= $detail['description'] ?></h1>
-              <h3><?= $detail['price'] ?></h3>
+              <h3><?= $detail['description'] ?></h3>
+              <h3>$<?= $detail['price'] ?></h3>
             </div><!--/span-->
           </div><!--/row-->
 
