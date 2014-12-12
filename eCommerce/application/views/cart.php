@@ -146,7 +146,7 @@ if(!empty($stripe_response)) {
       </table>
     </div><!-- /table -->
     <p class="container text-right">Shipping: 9.99</p>
-    <p class="container text-right">Sum amount: $<?= $cart['total_price'] ?> + 9.99</p>
+    <p class="container text-right">Sum amount: $<?= $cart['total_price'] + 9.99 ?></p>
      <div class="container">
        <a href="/"><button class="btn btn-primary pull-right" type="submit" value='submit'>Continue shopping</button></a>
      </div>
