@@ -252,25 +252,31 @@ class Cart extends CI_Controller
 		// Create the charge on Stripe's servers - this will charge the user's card
 		try {
 		$charge = Stripe_Charge::create(array(
-		  "amount" => 1000, // amount in cents, again
+		  // "amount" => 1000, // amount in cents, again
+		  "amount" => $this->input->post('total_to_charge')*100,
 		  "currency" => "usd",
 		  "card" => $token,
 		  "description" => "payinguser@example.com")
 		);
-		    $view_data['stripe_response'] = '<div class="alert alert-success">
-		                <strong>Success!</strong> Your payment was successful.
-						</div>';
-			$view_data['message'] = TRUE;
-			$this->session->set_userdata('paid', "1");
+		 //    $view_data['stripe_response'] = '<div class="alert alert-success">
+		 //                <strong>Success!</strong> Your payment was successful.
+			// 			</div>';
+			// $view_data['message'] = TRUE;
+			// $this->session->set_userdata('paid', "1");
+			$this->session->set_flashdata("success", "<div class='alert alert-success'>
+				<strong>Success!</strong> Your payment was successful. </div>'");
 			$this->pay();
 			redirect(base_url());
 		} catch(Stripe_CardError $e) {
 		  // The card has been declined
-			$view_data['stripe_response'] = '<div class="alert alert-danger">
-					  <strong>Error!</strong> '.$e->getMessage().'
-					  </div>';
-			$view_data['message'] = FALSE;
-			$this->session->set_userdata('paid', "0");
+			// $view_data['stripe_response'] = '<div class="alert alert-danger">
+			// 		  <strong>Error!</strong> '.$e->getMessage().'
+			// 		  </div>';
+			// $view_data['message'] = FALSE;
+			// $this->session->set_userdata('paid', "0");
+			$this->session->set_flashdata("error", '<div class="alert alert-danger">
+			 		  <strong>Error!</strong> '.$e->getMessage().'</div>');
+			redirect("/cart");
 		}
 		// $post_data = $this->input->post();
 		// var_dump($charge);

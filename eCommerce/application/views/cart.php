@@ -155,10 +155,11 @@ if(!empty($stripe_response)) {
      </div> -->
      <span class="payment-success">
      <?php 
-     if(!empty($stripe_response)) {
-     ?> <?= $stripe_response ?>
-     <?php }
-     ?>
+     if($this->session->flashdata("error")) 
+     {
+      echo $this->session->flashdata("error");
+     }
+    ?>
      </span>
 
        <form action="/cart/post" method="POST" id="payment-form" class="form-horizontal">
@@ -368,7 +369,8 @@ if(!empty($stripe_response)) {
              <h3 class="panel-title">Important notice</h3>
            </div>
            <div class="panel-body">
-             <p>Your card will be charged 30€ after submit.</p>
+             <p>Your card will be charged a total of $<?= $cart['total_price'] + 9.99 ?> after submit.</p>
+             <input type="hidden" name="total_to_charge" value="<?= $cart['total_price'] + 9.99 ?>">
              <p>Your account statement will show the following booking text:
                XXXXXXX </p>
            </div>

@@ -104,8 +104,14 @@
         </div><!--/.nav-collapse -->
       </div><!--/.container-fluid -->
     </nav>
-
-
+    <!-- SECTION FOR FLASH MESSAGES==================================================== -->
+    <?php 
+     if($this->session->flashdata("success")) 
+     {
+      echo $this->session->flashdata("success");
+     }
+    ?>
+    <!-- END SECTION FOR FLASH MESSAGES==================================================== -->
     <div class="container-fluid">
       <div id='image_banner' class='banner'>
         <img src="https://s3-us-west-1.amazonaws.com/codingdojoecommerce/background_images/sports-category-banner.jpg">
