@@ -201,6 +201,12 @@ class Cart extends CI_Controller
 				// 'order_id' => "1005"
 				);
 			$this->Cart_model->add_order_item($order_info_items);
+			$inventory = $this->Cart_model->get_inventory($show_cart[$i]['id']);
+			$inventory_count = array(
+					"inventory_count" => $inventory['inventory_count'] - $show_cart[$i]['quantity'],
+					"quantity_sold" => $inventory['quantity_sold'] + $show_cart[$i]['quantity'],
+				);
+			$this->Cart_model->update_inventory($inventory_count, $show_cart[$i]['id']);
 		}
 		//NEED TO UNSET THE WHOLE CART HERE, maybe add in flash session messages
 		redirect(base_url());

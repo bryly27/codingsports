@@ -83,7 +83,7 @@ class home extends CI_Controller
 	    $this->load->model('products');
 	    $count_all = $this->products->get_count_all();
 
-	    $limit = 10;
+	    $limit = 15;
 	    $count_pages = ceil($count_all / $limit);
 
 	    if($current_page == 0)
