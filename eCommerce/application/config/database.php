@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'aa1q6jwegsk4o80.c1niyvgxpmne.us-west-2.rds.amazonaws.com:3306';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
+$db['default']['username'] = 'AKIAJ2IE3LHOMFB2VMFQ';
+$db['default']['password'] = 'eTc2J6RlVOz21s5XFytVP3x5ZpZ50y8ktNldyYid';
 $db['default']['database'] = 'ecommercesports';
 
 
