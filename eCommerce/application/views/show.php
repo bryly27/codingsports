@@ -76,7 +76,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Shoe Store</a>
+          <a class="navbar-brand" href="/">Shoe Store</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -111,8 +111,8 @@
           <div class="row-fluid">
             <div class="span9">
               <h2></h2> <!--This H2 is empty to for the P below to be aligned to the image -->
-              <h1><?= $detail['description'] ?></h1>
-              <h3><?= $detail['price'] ?></h3>
+              <h3><?= $detail['description'] ?></h3>
+              <h3>$<?= $detail['price'] ?></h3>
             </div><!--/span-->
           </div><!--/row-->
 
@@ -139,7 +139,7 @@
           <div class="row-fluid">
           <form action="/cart/addToCart" method="post">
             <div class="input-group-lg span2">
-              <input type='number' size='10' id='numberinput' name='quantity' value='0' class="form-control">
+              <input type='number' min='0' max='10' size='10' id='numberinput' name='quantity' value='0' class="form-control">
               <!-- <span class="input-group-addon"></span> -->
             </div>
             <input type='hidden' name='action' value='add_to_cart'>

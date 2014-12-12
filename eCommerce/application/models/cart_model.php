@@ -30,8 +30,8 @@ class Cart_model extends CI_Model {
 
     function add_customer($user)
     {
-        $query = "INSERT INTO customers (first_name, last_name, ship_to_address, bill_to_address, card_number, security_code, exp_month, exp_year, created_at) VALUES (?,?,?,?,?,?,?,?,?)";
-        $values = array($user['first_name'], $user['last_name'], $user['ship_to_address'], $user['bill_to_address'], $user['card_number'], $user['security_code'],$user['exp_month'], $user['exp_year'], date("Y-m-d, H:i:s"));
+        $query = "INSERT INTO customers (first_name, last_name, ship_to_address, bill_to_address, created_at) VALUES (?,?,?,?,?)";
+        $values = array($user['first_name'], $user['last_name'], $user['ship_to_address'], $user['bill_to_address'], date("Y-m-d, H:i:s"));
         $this->db->query($query, $values);
         return mysql_insert_id();
     }
@@ -66,6 +66,18 @@ class Cart_model extends CI_Model {
         $values = array($info['order_id'], $info['product_id'], $info['quantity']);
         $this->db->query($query, $values);
         // return mysql_insert_id();
+    }
+
+    function get_inventory($id)
+    {
+        return $this->db->query("SELECT products.inventory_count, products.quantity_sold FROM products WHERE id = ?", $id)->row_array();
+    }
+
+    function update_inventory($inventory, $id)
+    {
+        $query = "UPDATE products SET inventory_count=?, quantity_sold=? WHERE id = $id";
+        $values = array($inventory['inventory_count'], $inventory['quantity_sold']);
+        return $this->db->query($query, $values);
     }
 }
 
