@@ -67,5 +67,17 @@ class Cart_model extends CI_Model {
         $this->db->query($query, $values);
         // return mysql_insert_id();
     }
+
+    function get_inventory($id)
+    {
+        return $this->db->query("SELECT products.inventory_count, products.quantity_sold FROM products WHERE id = ?", $id)->row_array();
+    }
+
+    function update_inventory($inventory, $id)
+    {
+        $query = "UPDATE products SET inventory_count=?, quantity_sold=? WHERE id = $id";
+        $values = array($inventory['inventory_count'], $inventory['quantity_sold']);
+        return $this->db->query($query, $values);
+    }
 }
 
