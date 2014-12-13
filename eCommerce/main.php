@@ -191,9 +191,9 @@
         	    <span class="caret"></span>
         	  </button>
         	  <ul class="dropdown-menu sort_button" role="menu" aria-labelledby="dropdownMenu1">
-        	    <li id="search_category" role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_asc">Price$-$$$</a></li>
+        	    <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_asc">Price$-$$$</a></li>
         </nav>
-              <li id="search_category" role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_desc">Price$$$-$</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="/home/order_desc">Price$$$-$</a></li>
           <!--     <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_asc/created_at">Newest-Oldest</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="/index/order_desc/created_at">Oldest-Newest</a></li>
  -->        </ul>

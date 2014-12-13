@@ -42,14 +42,14 @@ class home extends CI_Controller
 
 		$this->load->model('products');
 		$info['products'] = $this->products->get_products_price_asc();
-		$this->load->view('main', $info);
+		$this->load->view('main_partial', $info);
 	}
 
 	public function order_desc()
 	{
 		$this->load->model('products');
 		$info['products'] = $this->products->get_products_price_desc();
-		$this->load->view('main', $info);
+		$this->load->view('main_partial', $info);
 	}
 
 	public function search()

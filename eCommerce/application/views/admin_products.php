@@ -33,46 +33,46 @@
        <input type="Search" name='search' placeholder="Search..." class="form-control" />
        <div class="input-group-btn">
          <button class="btn btn-info">
-              <span class="glyphicon glyphicon-search"></span>
+            <span class="glyphicon glyphicon-search"></span>
          </button>
        </div>
      </div>
     </form>
   </div>
-    <div id='add_product' class= "pull-right">
+  <div id='table' class="table-responsive">
+    <table class="table table-striped table-hover">
+    <div id='add_product'>
       <form action='/admin_prod/add' method='post'>
         <button class="btn btn-sm btn-primary active" type='submit'> Add New Product</button>
         <input type='hidden' name='edit' value='add'>
       </form>
     </div>
-    <div id='table' class="table-responsive">
-      <table class="table table-striped table-hover">
-        <thead>
-          <th>Picture</th>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Inventory Count</th>
-          <th>Quantity Sold</th>
-          <th>Action</th>
-        </thead>
-      <tbody>
+    <thead>
+      <th>Picture</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Inventory Count</th>
+      <th>Quantity Sold</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
 <?php
-        foreach ($products as $product)
-        { ?>
-          <tr>
-            <td><img class='img' src='<?= $product['photo'] ?>'></td>
-            <td><?= $product['id'] ?></td>
-            <td><?= $product['name'] ?></td>
-            <td><?= $product['inventory_count'] ?></td>
-            <td><?= $product['quantity_sold'] ?></td>
-            <td id='action'>
-            <a href='/admin_prod/edit/<?= $product['id'] ?>'>edit</a>
-            <a href='/admin_prod/delete/<?= $product['id'] ?>'>delete</a>
-            </td>
-        </tr>
+      foreach ($products as $product)
+      { ?>
+        <tr>
+          <td><img class='img' src='<?= $product['photo'] ?>'></td>
+          <td><?= $product['id'] ?></td>
+          <td><?= $product['name'] ?></td>
+          <td><?= $product['inventory_count'] ?></td>
+          <td><?= $product['quantity_sold'] ?></td>
+          <td id='action'>
+          <a href='/admin_prod/edit/<?= $product['id'] ?>'>edit</a>
+          <a href='/admin_prod/delete/<?= $product['id'] ?>'>delete</a>
+          </td>
+      </tr>
 <?php   } ?>
 
-      </tbody>
+    </tbody>
         </table>
 
         <div class='pagination'>
